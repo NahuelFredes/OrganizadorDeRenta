@@ -5,6 +5,7 @@
  */
 package OrganizadorRenta;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class IniciarSesion extends javax.swing.JFrame {
 
-    public String name = "";
+    private MainMenu menu;
+    private String name = "";
 
     public IniciarSesion() {
         initComponents();
@@ -135,15 +137,18 @@ public class IniciarSesion extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new IniciarSesion().setVisible(true);
-            }
-        });
+        IniciarSesion iniciarsesion = new IniciarSesion();
+        iniciarsesion.setVisible(true);
+        iniciarsesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 
     public void cerrar() {
-
+        MainMenu menu = new MainMenu();
+        if (!password.getText().equals("") && (!nombre.getText().equals(""))) {
+            this.setVisible(false);
+            menu.setVisible(true);
+        }
         if (nombre.getText().equals("")) {
             JOptionPane.showConfirmDialog(null, "Usted no ha completado su nombre de usuario", "Ingresar", JOptionPane.CANCEL_OPTION);
         } else {
@@ -168,7 +173,9 @@ public class IniciarSesion extends javax.swing.JFrame {
                 name = nombre.getText();
                 nombre.setText("");
                 password.setText("");
+
             }
+            
         }
 
     }

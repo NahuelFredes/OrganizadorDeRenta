@@ -5,6 +5,7 @@
         <group>
 <<<<<<< HEAD
             <file>file:/home/nahuelfredes/Escritorio/OrganizadorDeRenta/OrganizadorRenta/src/OrganizadorRenta/Calendar.java</file>
+<<<<<<< HEAD
 =======
             <file>file:/home/teodoro/Escritorio/Proyecto%20github/OrganizadorDeRenta/OrganizadorRenta/src/OrganizadorRenta/Chat.java</file>
             <file>file:/home/teodoro/Escritorio/Proyecto%20github/OrganizadorDeRenta/OrganizadorRenta/src/OrganizadorRenta/IniciarSesion.java</file>
@@ -12,6 +13,12 @@
             <file>file:/home/teodoro/Escritorio/Proyecto%20github/OrganizadorDeRenta/OrganizadorRenta/src/OrganizadorRenta/OrganizadorRenta.java</file>
             <file>file:/home/teodoro/Escritorio/Proyecto%20github/OrganizadorDeRenta/OrganizadorRenta/src/OrganizadorRenta/Calendar.java</file>
 >>>>>>> 52d1d13f6c478faabba2812159a9d17ce1d601a9
+=======
+            <file>file:/home/nahuelfredes/Escritorio/OrganizadorDeRenta/OrganizadorRenta/src/OrganizadorRenta/Chat.java</file>
+            <file>file:/home/nahuelfredes/Escritorio/OrganizadorDeRenta/OrganizadorRenta/src/OrganizadorRenta/IniciarSesion.java</file>
+            <file>file:/home/nahuelfredes/Escritorio/OrganizadorDeRenta/OrganizadorRenta/src/OrganizadorRenta/OrganizadorRenta.java</file>
+            <file>file:/home/nahuelfredes/Escritorio/OrganizadorDeRenta/OrganizadorRenta/src/OrganizadorRenta/MainMenu.java</file>
+>>>>>>> Fredes
         </group>
     </open-files>
 </project-private>

@@ -8,11 +8,11 @@ public class MainMenu extends javax.swing.JFrame {
     private IniciarSesion iniciarSesion;
     private Chat chat;
     private Administracion admin;
+    private Calendar alquiler;
     
     public MainMenu() {
         this.iniciarSesion = new IniciarSesion();
         initComponents();
-
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
@@ -40,6 +40,11 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         boton_alquilar.setText("Alquiler");
+        boton_alquilar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_alquilarActionPerformed(evt);
+            }
+        });
 
         boton_Cerrar.setText("Cerrar Sesion");
         boton_Cerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +110,10 @@ public class MainMenu extends javax.swing.JFrame {
         abrirChat();
     }//GEN-LAST:event_botton_chatActionPerformed
 
+    private void boton_alquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_alquilarActionPerformed
+        abrirAlquiler();
+    }//GEN-LAST:event_boton_alquilarActionPerformed
+
     public void closeSesion() {
         this.setVisible(false);
         iniciarSesion.setVisible(true);
@@ -120,6 +129,12 @@ public class MainMenu extends javax.swing.JFrame {
         admin = new Administracion();
         this.setVisible(false);
         admin.setVisible(true);
+    }
+    
+    public void abrirAlquiler(){
+        alquiler = new Calendar();
+        this.setVisible(false);
+        alquiler.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

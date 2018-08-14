@@ -19,7 +19,7 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         this.iniciarSesion = new IniciarSesion();
         initComponents();
-        this.chat = new Chat();
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
@@ -118,6 +118,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     }
     public void abrirChat(){
+        Chat chat = new Chat();
         this.setVisible(false);
         chat.setVisible(true);
     }

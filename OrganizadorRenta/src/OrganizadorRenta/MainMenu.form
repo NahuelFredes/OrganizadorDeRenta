@@ -93,6 +93,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Alquiler"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_alquilarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="boton_Cerrar">
       <Properties>

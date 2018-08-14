@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package OrganizadorRenta;
 
 import javax.swing.JFrame;
 
-/**
- *
- * @author nahuelfredes
- */
 public class MainMenu extends javax.swing.JFrame {
 
     private IniciarSesion iniciarSesion;
     private Chat chat;
+    private Administracion admin;
     
     public MainMenu() {
         this.iniciarSesion = new IniciarSesion();
@@ -101,7 +94,7 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void boton_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_adminActionPerformed
-
+        abrirAdmin();
     }//GEN-LAST:event_boton_adminActionPerformed
 
     private void boton_CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_CerrarActionPerformed
@@ -118,9 +111,15 @@ public class MainMenu extends javax.swing.JFrame {
 
     }
     public void abrirChat(){
-        Chat chat = new Chat();
+        chat = new Chat();
         this.setVisible(false);
         chat.setVisible(true);
+    }
+    
+    public void abrirAdmin(){
+        admin = new Administracion();
+        this.setVisible(false);
+        admin.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

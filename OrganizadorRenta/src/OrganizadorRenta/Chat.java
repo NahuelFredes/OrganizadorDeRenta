@@ -9,14 +9,13 @@ package OrganizadorRenta;
  *
  * @author nahuelfredes
  */
-public class Chat extends javax.swing.JFrame {
+public class Chat extends javax.swing.JFrame  {
 
-    /**
-     * Creates new form Chat
-     */
+   private MainMenu menu;
+   
     public Chat() {
         initComponents();
-        
+        this.menu = new MainMenu();
     }
 
     
@@ -28,8 +27,8 @@ public class Chat extends javax.swing.JFrame {
         mostrar = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         escribir = new javax.swing.JTextField();
-        enviar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btn_enviar = new javax.swing.JButton();
+        btn_volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,14 +38,19 @@ public class Chat extends javax.swing.JFrame {
 
         jLabel1.setText("CHAT");
 
-        enviar.setText("Enviar");
-        enviar.addActionListener(new java.awt.event.ActionListener() {
+        btn_enviar.setText("Enviar");
+        btn_enviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enviarActionPerformed(evt);
+                btn_enviarActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Volver");
+        btn_volver.setText("Volver");
+        btn_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_volverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,9 +65,9 @@ public class Chat extends javax.swing.JFrame {
                         .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btn_enviar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                             .addComponent(escribir))))
                 .addContainerGap(42, Short.MAX_VALUE))
@@ -79,24 +83,33 @@ public class Chat extends javax.swing.JFrame {
                 .addComponent(escribir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enviar)
-                    .addComponent(jButton1))
+                    .addComponent(btn_enviar)
+                    .addComponent(btn_volver))
                 .addGap(97, 97, 97))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarActionPerformed
+    private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_enviarActionPerformed
+    }//GEN-LAST:event_btn_enviarActionPerformed
 
- 
+    private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
+        closeChat();
+    }//GEN-LAST:event_btn_volverActionPerformed
+
+     public void closeChat() {
+        this.setVisible(false);
+        menu.setVisible(true);
+
+    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton enviar;
+    private javax.swing.JButton btn_enviar;
+    private javax.swing.JButton btn_volver;
     private javax.swing.JTextField escribir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea mostrar;

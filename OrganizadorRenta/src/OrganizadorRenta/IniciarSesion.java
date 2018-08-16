@@ -15,10 +15,15 @@ import javax.swing.JOptionPane;
 public class IniciarSesion extends javax.swing.JFrame {
 
     private MainMenu menu;
-    private String name = "";
+    private String name;
+    private String usuario;
+    private String contraseña;
 
     public IniciarSesion() {
         initComponents();
+        this.name = new String();
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -116,7 +121,8 @@ public class IniciarSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
-
+        usuario = nombre.getText();
+        System.out.println(usuario);
         cerrar();
     }//GEN-LAST:event_ingresarActionPerformed
 
@@ -141,11 +147,22 @@ public class IniciarSesion extends javax.swing.JFrame {
         iniciarsesion.setVisible(true);
         iniciarsesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getUsuario() {
+        return usuario;
+
     }
 
     public void cerrar() {
-        MainMenu menu = new MainMenu();
+        MainMenu menu = new MainMenu(usuario);       
         if (!password.getText().equals("") && (!nombre.getText().equals(""))) {
+
             this.setVisible(false);
             menu.setVisible(true);
         }
@@ -153,10 +170,11 @@ public class IniciarSesion extends javax.swing.JFrame {
             JOptionPane.showConfirmDialog(null, "Usted no ha completado su nombre de usuario", "Ingresar", JOptionPane.CANCEL_OPTION);
         } else {
             if (remember.isSelected()) {
-                name = nombre.getText();
+               
+
 
             } else {
-                name = nombre.getText();
+
                 nombre.setText("");
 
             }
@@ -166,19 +184,21 @@ public class IniciarSesion extends javax.swing.JFrame {
 
         } else {
             if (remember.isSelected()) {
-                name = nombre.getText();
+
                 password.setText("");
 
             } else {
-                name = nombre.getText();
+                
                 nombre.setText("");
                 password.setText("");
 
             }
-            
-        }
 
+        }
+        
+        contraseña = password.getText();
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ingresar;

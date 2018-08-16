@@ -17,9 +17,9 @@ public class Chat extends javax.swing.JFrame {
 
     private MainMenu menu;
 
-    public Chat() {
+    public Chat(MainMenu men) {
         initComponents();
-        this.menu = new MainMenu();
+        this.menu = men;
         mostrar.setEditable(false);
         escribir.addKeyListener(new KeyAdapter() {
 
@@ -128,7 +128,7 @@ public class Chat extends javax.swing.JFrame {
     }//GEN-LAST:event_escribirActionPerformed
 
     public void closeChat() {
-        this.setVisible(false);
+        this.dispose();
         menu.setVisible(true);
 
     }

@@ -53,7 +53,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jCalendar2" min="-2" pref="418" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel4" min="-2" pref="212" max="-2" attributes="0"/>
+                                              <Component id="nameLabel" min="-2" pref="212" max="-2" attributes="0"/>
                                               <Group type="102" attributes="0">
                                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
@@ -98,7 +98,7 @@
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel4" min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="nameLabel" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace pref="68" max="32767" attributes="0"/>
               <Component id="btnVolverMenu" min="-2" pref="56" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -155,10 +155,7 @@
         <Property name="text" type="java.lang.String" value="Iniciado como:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Teodoro Reyna"/>
-      </Properties>
+    <Component class="javax.swing.JLabel" name="nameLabel">
     </Component>
     <Component class="com.toedter.calendar.JCalendar" name="jCalendar2">
     </Component>

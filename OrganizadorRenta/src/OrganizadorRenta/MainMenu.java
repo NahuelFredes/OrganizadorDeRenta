@@ -9,9 +9,11 @@ public class MainMenu extends javax.swing.JFrame {
     private Chat chat;
     private Administracion admin;
     private Calendar alquiler;
+    private String user;
     
-    public MainMenu() {
+    public MainMenu(String usr) {
         this.iniciarSesion = new IniciarSesion();
+        this.user = usr;
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -115,24 +117,24 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_alquilarActionPerformed
 
     public void closeSesion() {
-        this.setVisible(false);
+        this.dispose();
         iniciarSesion.setVisible(true);
-
+        
     }
     public void abrirChat(){
-        chat = new Chat();
+        chat = new Chat(this);
         this.setVisible(false);
         chat.setVisible(true);
     }
     
     public void abrirAdmin(){
-        admin = new Administracion();
+        admin = new Administracion(this);
         this.setVisible(false);
         admin.setVisible(true);
     }
     
     public void abrirAlquiler(){
-        alquiler = new Calendar();
+        alquiler = new Calendar(this, user);
         this.setVisible(false);
         alquiler.setVisible(true);
     }

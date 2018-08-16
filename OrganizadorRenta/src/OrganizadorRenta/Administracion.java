@@ -13,9 +13,9 @@ public class Administracion extends javax.swing.JFrame {
 
     private MainMenu menu;
 
-    public Administracion() {
+    public Administracion(MainMenu men) {
         initComponents();
-        this.menu = new MainMenu();
+        this.menu = men;
 
     }
 
@@ -59,7 +59,7 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_volverAdminActionPerformed
 
     public void cerrarAdmin() {
-        this.setVisible(false);
+        this.dispose();
         menu.setVisible(true);
         
     }

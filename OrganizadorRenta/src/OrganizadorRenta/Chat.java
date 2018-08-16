@@ -5,20 +5,38 @@
  */
 package OrganizadorRenta;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author nahuelfredes
  */
-public class Chat extends javax.swing.JFrame  {
+public class Chat extends javax.swing.JFrame {
 
-   private MainMenu menu;
-   
-    public Chat() {
+    private MainMenu menu;
+
+    public Chat(MainMenu men) {
         initComponents();
-        this.menu = new MainMenu();
+        this.menu = men;
+        mostrar.setEditable(false);
+        escribir.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                int key = e.getKeyCode();
+                if (key == KeyEvent.VK_ENTER) {
+
+                    enviarMsj();
+
+                }
+
+            }
+        });
+
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -37,6 +55,12 @@ public class Chat extends javax.swing.JFrame  {
         jScrollPane1.setViewportView(mostrar);
 
         jLabel1.setText("CHAT");
+
+        escribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                escribirActionPerformed(evt);
+            }
+        });
 
         btn_enviar.setText("Enviar");
         btn_enviar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,19 +116,30 @@ public class Chat extends javax.swing.JFrame  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
-        // TODO add your handling code here:
+        enviarMsj();
     }//GEN-LAST:event_btn_enviarActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
         closeChat();
     }//GEN-LAST:event_btn_volverActionPerformed
 
-     public void closeChat() {
-        this.setVisible(false);
+    private void escribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escribirActionPerformed
+
+    }//GEN-LAST:event_escribirActionPerformed
+
+    public void closeChat() {
+        this.dispose();
         menu.setVisible(true);
 
     }
-   
+
+    public void enviarMsj() {
+        String escrito = escribir.getText();
+        mostrar.append(escrito + "\n");
+        escribir.setText("");
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_enviar;

@@ -25,11 +25,11 @@ public class Calendar extends javax.swing.JFrame {
     private MainMenu menu;
 
 
-    public Calendar(MainMenu men, Usuario mesi) {
+    public Calendar(MainMenu men, Usuario usuario) {
         initComponents();
         this.menu = men;
         
-        nameLabel.setText(mesi.getNombre());
+        nameLabel.setText(usuario.getNombre());
         
         
 

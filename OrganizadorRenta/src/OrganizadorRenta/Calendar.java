@@ -1,3 +1,4 @@
+
 package OrganizadorRenta;
 
 import java.beans.PropertyChangeEvent;
@@ -23,10 +24,15 @@ public class Calendar extends javax.swing.JFrame {
 
     private MainMenu menu;
 
-    public Calendar(MainMenu men, String usr) {
+
+    public Calendar(MainMenu men, Usuario mesi) {
         initComponents();
         this.menu = men;
-        nameLabel.setText(usr);
+        
+        nameLabel.setText(mesi.getNombre());
+        
+        
+
     }
 
     @SuppressWarnings("unchecked")

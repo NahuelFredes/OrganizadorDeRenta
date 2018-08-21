@@ -1,29 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package OrganizadorRenta;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author nahuelfredes
- */
 public class IniciarSesion extends javax.swing.JFrame {
 
     private MainMenu menu;
-    private String name;
-    private String usuario;
-    private String contraseña;
+    private Usuario persona = new Usuario();
 
     public IniciarSesion() {
         initComponents();
-        this.name = new String();
-        
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -35,8 +22,8 @@ public class IniciarSesion extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         remember = new javax.swing.JCheckBox();
-        nombre = new javax.swing.JTextField();
-        password = new javax.swing.JPasswordField();
+        lbl_nombre = new javax.swing.JTextField();
+        lbl_password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,15 +47,15 @@ public class IniciarSesion extends javax.swing.JFrame {
             }
         });
 
-        nombre.addActionListener(new java.awt.event.ActionListener() {
+        lbl_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreActionPerformed(evt);
+                lbl_nombreActionPerformed(evt);
             }
         });
 
-        password.addActionListener(new java.awt.event.ActionListener() {
+        lbl_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
+                lbl_passwordActionPerformed(evt);
             }
         });
 
@@ -89,8 +76,8 @@ public class IniciarSesion extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(password))))
+                            .addComponent(lbl_nombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_password))))
                 .addGap(12, 12, 12))
             .addGroup(layout.createSequentialGroup()
                 .addGap(125, 125, 125)
@@ -105,11 +92,11 @@ public class IniciarSesion extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(remember)
@@ -121,8 +108,8 @@ public class IniciarSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
-        usuario = nombre.getText();
-        System.out.println(usuario);
+        persona.setNombre(lbl_nombre.getText());
+
         cerrar();
     }//GEN-LAST:event_ingresarActionPerformed
 
@@ -130,13 +117,13 @@ public class IniciarSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rememberActionPerformed
 
-    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+    private void lbl_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbl_nombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreActionPerformed
+    }//GEN-LAST:event_lbl_nombreActionPerformed
 
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+    private void lbl_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbl_passwordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
+    }//GEN-LAST:event_lbl_passwordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,56 +134,44 @@ public class IniciarSesion extends javax.swing.JFrame {
         iniciarsesion.setVisible(true);
         iniciarsesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getUsuario() {
-        return usuario;
-
     }
 
     public void cerrar() {
-        MainMenu menu = new MainMenu(usuario);       
-        if (!password.getText().equals("") && (!nombre.getText().equals(""))) {
+        MainMenu menu = new MainMenu(persona);
+        if (!lbl_password.getText().equals("") && (!lbl_nombre.getText().equals(""))) {
 
             this.setVisible(false);
             menu.setVisible(true);
         }
-        if (nombre.getText().equals("")) {
+        if (lbl_nombre.getText().equals("")) {
             JOptionPane.showConfirmDialog(null, "Usted no ha completado su nombre de usuario", "Ingresar", JOptionPane.CANCEL_OPTION);
         } else {
             if (remember.isSelected()) {
-               
-
 
             } else {
 
-                nombre.setText("");
+                lbl_nombre.setText("");
 
             }
         }
-        if (password.getText().equals("")) {
+        if (lbl_password.getText().equals("")) {
             JOptionPane.showConfirmDialog(null, "Usted no ha completado su contraseña", "Ingresar", JOptionPane.CANCEL_OPTION);
 
         } else {
             if (remember.isSelected()) {
 
-                password.setText("");
+                lbl_password.setText("");
 
             } else {
-                
-                nombre.setText("");
-                password.setText("");
+
+                lbl_nombre.setText("");
+                lbl_password.setText("");
 
             }
 
         }
-        
-        contraseña = password.getText();
+
+        persona.setContraseña(lbl_password.getText());
     }
 
 
@@ -205,8 +180,8 @@ public class IniciarSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField nombre;
-    private javax.swing.JPasswordField password;
+    private javax.swing.JTextField lbl_nombre;
+    private javax.swing.JPasswordField lbl_password;
     private javax.swing.JCheckBox remember;
     // End of variables declaration//GEN-END:variables
 }

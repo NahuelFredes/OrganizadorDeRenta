@@ -11,9 +11,9 @@ public class MainMenu extends javax.swing.JFrame {
     private Calendar alquiler;
     private Usuario user;
     
-    public MainMenu(Usuario mesi) {
+    public MainMenu(Usuario usuario) {
         this.iniciarSesion = new IniciarSesion();
-        this.user = mesi;
+        this.user = usuario;
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

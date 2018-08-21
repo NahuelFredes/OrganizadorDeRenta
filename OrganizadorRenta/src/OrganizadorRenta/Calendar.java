@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package OrganizadorRenta;
 
 import java.beans.PropertyChangeEvent;
@@ -13,11 +8,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class Calendar extends javax.swing.JFrame {
 
@@ -230,10 +230,7 @@ public class Calendar extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void BtnAlquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAlquilarActionPerformed
-
         Alquilar();
-
-
     }//GEN-LAST:event_BtnAlquilarActionPerformed
 
     private void calendarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendarioPropertyChange
@@ -264,6 +261,7 @@ public class Calendar extends javax.swing.JFrame {
         int IYear = localDate.getYear();
         int IMonth = localDate.getMonthValue();
         int IDay = localDate.getDayOfMonth();
+        int fechaI = IYear + IMonth + IDay;
 //dia final
         Date dateF = selecFFecha.getDate();
         String strDateF = DateFormat.getDateInstance().format(dateF);
@@ -271,24 +269,79 @@ public class Calendar extends javax.swing.JFrame {
         int FYear = localDate2.getYear();
         int FMonth = localDate2.getMonthValue();
         int FDay = localDate2.getDayOfMonth();
+        int fechaF = FYear + FMonth + FDay;
 
         if (!strDateI.equals("") && !strDateF.equals("") && !CantMayores.getText().equals("") && !CantMenores.getText().equals("") && !Ofrece.getText().equals("")) {
-            //String diaI = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + strDatei + ".txt";
-            //String diaF = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + strDatef + ".txt";
-            try {
-                String diaItxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + strDateF.replace('/', '-') + ".txt";
-                File archivo = new File(diaItxt);
-                try (FileWriter escritor = new FileWriter(archivo)) {
-                    escritor.write(CantMayores.getText());
-                    escritor.close();
+            if (fechaI > fechaF) {
+                String error = JOptionPane.showInputDialog(null,"Ha ingresado fechas incompatibles la fecha de inicio es mayor a la final","Error",JOptionPane.DEFAULT_OPTION);
+
+            } else {
+                System.out.println(strDateF);
+                try {
+                    String diaItxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + strDateF.replace('/', '-') + ".txt";
+                    File archivo = new File(diaItxt);
+                    try (FileWriter escritor = new FileWriter(archivo)) {
+                        escritor.write(CantMayores.getText());
+                        escritor.close();
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+            if (strDateI.equals(strDateF)) {
 
+            } else {
+                // TODO Auto-generated method stub
+                List<Date> dias = new ArrayList<Date>();
+
+                String incio_dia = strDateI;
+                String final_dia = strDateF;
+
+                DateFormat formatter;
+
+                formatter = new SimpleDateFormat("dd/MM/yyyy");
+                Date startDate = null;
+                try {
+                    startDate = (Date) formatter.parse(strDateI);
+                } catch (ParseException e) {
+
+                    e.printStackTrace();
+                }
+                Date endDate = null;
+                try {
+                    endDate = (Date) formatter.parse(strDateF);
+                } catch (ParseException e) {
+
+                    e.printStackTrace();
+                }
+                long interval = 24 * 1000 * 60 * 60;
+                long endTime = endDate.getTime();
+                long curTime = startDate.getTime();
+                while (curTime <= endTime) {
+                    dias.add(new Date(curTime));
+                    curTime += interval;
+                }
+                for (int i = 0; i < dias.size(); i++) {
+                    Date lDate = (Date) dias.get(i);
+                    String ds = formatter.format(lDate);
+                    try {
+                        System.out.println(ds);
+                        String diaTxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + ds.replace('/', '-') + ".txt";
+                        File archivo = new File(diaTxt);
+                        try (FileWriter escritor = new FileWriter(archivo)) {
+                            escritor.write(CantMayores.getText());
+                            escritor.close();
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
         }
-
     }
 
     public void abrirtxt() throws FileNotFoundException, IOException {
@@ -297,8 +350,16 @@ public class Calendar extends javax.swing.JFrame {
         LocalDate localDate3 = dateC.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int CYear = localDate3.getYear();
         int CMonth = localDate3.getMonthValue();
+        String SMonth = "";
+        if (CMonth < 9) {
+            SMonth = "0" + CMonth;
+            System.out.println(SMonth);
+        } else {
+            SMonth = "" + CMonth;
+            System.out.println(SMonth);
+        }
         int CDay = localDate3.getDayOfMonth();
-        String diaCalendar = CDay + "-" + "0" + CMonth + "-" + CYear;
+        String diaCalendar = CDay + "-" + SMonth + "-" + CYear;
         String dia = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + diaCalendar + ".txt";
         File archivodia = new File(dia);
         System.out.println(archivodia);
@@ -314,6 +375,8 @@ public class Calendar extends javax.swing.JFrame {
         };
     }
 
+//String diaI = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + strDatei + ".txt";
+//String diaF = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + strDatef + ".txt";
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AreaTexto;

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package OrganizadorRenta;
 
 
@@ -11,11 +7,11 @@ public class Calendar extends javax.swing.JFrame {
     private MainMenu menu;
 
     
-    public Calendar(MainMenu men, String usr) {
+    public Calendar(MainMenu men, Usuario mesi) {
         initComponents();
         this.menu = men;
         
-        nameLabel.setText(usr);
+        nameLabel.setText(mesi.getNombre());
         
         
     }

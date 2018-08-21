@@ -9,11 +9,11 @@ public class MainMenu extends javax.swing.JFrame {
     private Chat chat;
     private Administracion admin;
     private Calendar alquiler;
-    private String user;
+    private Usuario user;
     
-    public MainMenu(String usr) {
+    public MainMenu(Usuario mesi) {
         this.iniciarSesion = new IniciarSesion();
-        this.user = usr;
+        this.user = mesi;
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

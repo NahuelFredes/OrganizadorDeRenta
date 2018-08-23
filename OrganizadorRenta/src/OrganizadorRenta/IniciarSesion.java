@@ -7,7 +7,7 @@ public class IniciarSesion extends javax.swing.JFrame {
 
     private MainMenu menu;
     private Usuario persona = new Usuario();
-        private Alquiler alquiI;
+    private Alquiler alquiI  = new Alquiler();
 
     public IniciarSesion() {
         initComponents();

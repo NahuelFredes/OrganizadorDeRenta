@@ -256,6 +256,8 @@ public class Calendar extends javax.swing.JFrame {
     }
 
     public void Alquilar() {
+        System.out.println(CantMayores.getText());
+        System.out.println(alqui);
         alqui.setCantAdults(Integer.parseInt(CantMayores.getText()));
         alqui.setCantNinos(Integer.parseInt(CantMenores.getText()));
         alqui.setDinero(Integer.parseInt(Ofrece.getText()));

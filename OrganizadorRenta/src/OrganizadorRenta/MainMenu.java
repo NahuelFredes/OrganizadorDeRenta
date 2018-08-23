@@ -1,4 +1,3 @@
-
 package OrganizadorRenta;
 
 import javax.swing.JFrame;
@@ -8,16 +7,20 @@ public class MainMenu extends javax.swing.JFrame {
     private IniciarSesion iniciarSesion;
     private Chat chat;
     private Administracion admin;
-    private Calendar alquiler;
+    private Calendar alquilerc;
     private Usuario user;
-    
-    public MainMenu(Usuario usuario) {
+    private Alquiler alquiI;
+
+    public MainMenu(Usuario usuario, Alquiler alqui) {
         this.iniciarSesion = new IniciarSesion();
         this.user = usuario;
+        this.alquiI = alqui;
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -119,24 +122,25 @@ public class MainMenu extends javax.swing.JFrame {
     public void closeSesion() {
         this.dispose();
         iniciarSesion.setVisible(true);
-        
+
     }
-    public void abrirChat(){
+
+    public void abrirChat() {
         chat = new Chat(this);
         this.setVisible(false);
         chat.setVisible(true);
     }
-    
-    public void abrirAdmin(){
+
+    public void abrirAdmin() {
         admin = new Administracion(this);
         this.setVisible(false);
         admin.setVisible(true);
     }
-    
-    public void abrirAlquiler(){
-        alquiler = new Calendar(this, user);
+
+    public void abrirAlquiler() {
+        alquilerc = new Calendar(this, user, alquiI);
         this.setVisible(false);
-        alquiler.setVisible(true);
+        alquilerc.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,15 +1,18 @@
-
 package OrganizadorRenta;
 
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 public class CrearCuenta extends javax.swing.JFrame {
+
     private IniciarSesion iniciarSesion;
-   
+    private MainMenu menu;
+
     public CrearCuenta() {
         initComponents();
         this.iniciarSesion = new IniciarSesion();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -80,27 +83,28 @@ public class CrearCuenta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(cuenta_premium, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tarjetaLbl, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(32, 32, 32)
-                        .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_crearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 63, Short.MAX_VALUE))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel3)
-                                .addComponent(dateLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                                .addComponent(mailLbl)
-                                .addComponent(apellidoLbl)
-                                .addComponent(nombreLbl)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tarjetaLbl, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mailLbl, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(apellidoLbl, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreLbl, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dateLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_crearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,9 +120,9 @@ public class CrearCuenta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(mailLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mailLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addGap(7, 7, 7)
@@ -128,11 +132,12 @@ public class CrearCuenta extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tarjetaLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tarjetaLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cancel)
                     .addComponent(btn_crearCuenta))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,19 +152,78 @@ public class CrearCuenta extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreLblActionPerformed
 
     private void btn_crearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearCuentaActionPerformed
-        // TODO add your handling code here:
+        crearCuenta();
     }//GEN-LAST:event_btn_crearCuentaActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         volverInicio();
+
     }//GEN-LAST:event_btn_cancelActionPerformed
 
-    public void volverInicio(){
+    public void volverInicio() {
         this.dispose();
         iniciarSesion.setVisible(true);
-        
-  
+
     }
+
+    public Date getDate(Date dateLbl) {
+        return dateLbl;
+    }
+
+    public void setDate() {
+        this.dateLbl = dateLbl;
+    }
+
+//    public void crearCuenta() {
+//        if (cuenta_premium.isSelected()) {
+//            if (nombreLbl.getText().equals("") && (apellidoLbl.getText().equals("")
+//                    && (mailLbl.getText().equals("") &&  ( tarjetaLbl.getText().equals(""))))) {
+//                MainMenu menu = new MainMenu(null, null);
+//                
+//            } else {
+//                JOptionPane.showConfirmDialog(null, "Usted no ha completado todos los campos requeridos", "Crear Cuenta", JOptionPane.CANCEL_OPTION);
+//                System.out.println(apellidoLbl.getText());
+//                System.out.println(nombreLbl.getText());
+//                System.out.println(tarjetaLbl.getText());
+//                System.out.println(mailLbl.getText());
+//                System.out.println(dateLbl.getDate());
+//            }
+//        } else if (!nombreLbl.getText().equals("") && apellidoLbl.getText().equals("")
+//                && mailLbl.getText().equals("") ) {
+//            MainMenu menu = new MainMenu(null, null);
+//
+//        } else {
+//            JOptionPane.showConfirmDialog(null, "Usted no ha completado todos los campos requeridos", "Crear Cuenta", JOptionPane.CANCEL_OPTION);
+//            System.out.println("SIMOOON");
+//        }
+//    }
+    public void crearCuenta() {
+        MainMenu menu = new MainMenu(null, null);
+
+        if (cuenta_premium.isSelected()) {
+            if (!nombreLbl.getText().equals("") && (!apellidoLbl.getText().equals("")) && (!mailLbl.getText().equals("")) && (!tarjetaLbl.getText().equals("")) && (!dateLbl.getDate().equals(null))) {
+
+                this.setVisible(false);
+                menu.setVisible(true);
+            } else {
+                JOptionPane.showConfirmDialog(null, "Usted no ha completado todos los campos requeridos", "Crear Cuenta", JOptionPane.CANCEL_OPTION);
+                nombreLbl.setText("");
+                apellidoLbl.setText("");
+                mailLbl.setText("");
+                dateLbl.setDate(null);
+                tarjetaLbl.setText("");
+            }
+        }else if (!nombreLbl.getText().equals("") && (!apellidoLbl.getText().equals("")) && (!mailLbl.getText().equals("")) && (!dateLbl.getDate().equals(null))) {
+
+                this.setVisible(false);
+                menu.setVisible(true);
+            }else { 
+            JOptionPane.showConfirmDialog(null, "Usted no ha completado todos los campos requeridos", "Crear Cuenta", JOptionPane.CANCEL_OPTION);
+        }
+        
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField apellidoLbl;

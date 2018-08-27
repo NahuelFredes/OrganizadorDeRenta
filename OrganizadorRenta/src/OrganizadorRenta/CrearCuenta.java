@@ -32,6 +32,8 @@ public class CrearCuenta extends javax.swing.JFrame {
         cuenta_premium = new javax.swing.JRadioButton();
         tarjetaLbl = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        contraLbl = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,21 +75,23 @@ public class CrearCuenta extends javax.swing.JFrame {
 
         jLabel6.setText("Ingrese n° de tarjeta de credito");
 
+        jLabel7.setText("Contraseña");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_crearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 27, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cuenta_premium, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(tarjetaLbl, javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,14 +101,16 @@ public class CrearCuenta extends javax.swing.JFrame {
                             .addComponent(mailLbl, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(apellidoLbl, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nombreLbl, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_crearCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 27, Short.MAX_VALUE))
+                            .addComponent(dateLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                            .addComponent(contraLbl, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(cuenta_premium)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,6 +123,10 @@ public class CrearCuenta extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(apellidoLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contraLbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -137,7 +147,7 @@ public class CrearCuenta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_cancel)
                     .addComponent(btn_crearCuenta))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -174,34 +184,11 @@ public class CrearCuenta extends javax.swing.JFrame {
         this.dateLbl = dateLbl;
     }
 
-//    public void crearCuenta() {
-//        if (cuenta_premium.isSelected()) {
-//            if (nombreLbl.getText().equals("") && (apellidoLbl.getText().equals("")
-//                    && (mailLbl.getText().equals("") &&  ( tarjetaLbl.getText().equals(""))))) {
-//                MainMenu menu = new MainMenu(null, null);
-//                
-//            } else {
-//                JOptionPane.showConfirmDialog(null, "Usted no ha completado todos los campos requeridos", "Crear Cuenta", JOptionPane.CANCEL_OPTION);
-//                System.out.println(apellidoLbl.getText());
-//                System.out.println(nombreLbl.getText());
-//                System.out.println(tarjetaLbl.getText());
-//                System.out.println(mailLbl.getText());
-//                System.out.println(dateLbl.getDate());
-//            }
-//        } else if (!nombreLbl.getText().equals("") && apellidoLbl.getText().equals("")
-//                && mailLbl.getText().equals("") ) {
-//            MainMenu menu = new MainMenu(null, null);
-//
-//        } else {
-//            JOptionPane.showConfirmDialog(null, "Usted no ha completado todos los campos requeridos", "Crear Cuenta", JOptionPane.CANCEL_OPTION);
-//            System.out.println("SIMOOON");
-//        }
-//    }
     public void crearCuenta() {
         MainMenu menu = new MainMenu(null, null);
 
         if (cuenta_premium.isSelected()) {
-            if (!nombreLbl.getText().equals("") && (!apellidoLbl.getText().equals("")) && (!mailLbl.getText().equals("")) && (!tarjetaLbl.getText().equals("")) && (!dateLbl.getDate().equals(null))) {
+            if (!nombreLbl.getText().equals("") && (!apellidoLbl.getText().equals(""))&& (!contraLbl.getText().equals("")) && (!mailLbl.getText().equals("")) && (!tarjetaLbl.getText().equals("")) && (!dateLbl.getDate().equals(null))) {
 
                 this.setVisible(false);
                 menu.setVisible(true);
@@ -209,18 +196,24 @@ public class CrearCuenta extends javax.swing.JFrame {
                 JOptionPane.showConfirmDialog(null, "Usted no ha completado todos los campos requeridos", "Crear Cuenta", JOptionPane.CANCEL_OPTION);
                 nombreLbl.setText("");
                 apellidoLbl.setText("");
+                contraLbl.setText("");
                 mailLbl.setText("");
                 dateLbl.setDate(null);
                 tarjetaLbl.setText("");
             }
-        }else if (!nombreLbl.getText().equals("") && (!apellidoLbl.getText().equals("")) && (!mailLbl.getText().equals("")) && (!dateLbl.getDate().equals(null))) {
+        } else if (!nombreLbl.getText().equals("") && (!apellidoLbl.getText().equals(""))&& (!contraLbl.getText().equals("")) && (!mailLbl.getText().equals("")) && (!dateLbl.getDate().equals(null))) {
 
-                this.setVisible(false);
-                menu.setVisible(true);
-            }else { 
+            this.setVisible(false);
+            menu.setVisible(true);
+        } else {
             JOptionPane.showConfirmDialog(null, "Usted no ha completado todos los campos requeridos", "Crear Cuenta", JOptionPane.CANCEL_OPTION);
+            nombreLbl.setText("");
+            apellidoLbl.setText("");
+            contraLbl.setText("");
+            mailLbl.setText("");
+            dateLbl.setDate(null);
+            tarjetaLbl.setText("");
         }
-        
 
     }
 
@@ -229,6 +222,7 @@ public class CrearCuenta extends javax.swing.JFrame {
     private javax.swing.JTextField apellidoLbl;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_crearCuenta;
+    private javax.swing.JTextField contraLbl;
     private javax.swing.JRadioButton cuenta_premium;
     private com.toedter.calendar.JDateChooser dateLbl;
     private com.toedter.calendar.JCalendar jCalendar1;
@@ -238,6 +232,7 @@ public class CrearCuenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField mailLbl;
     private javax.swing.JTextField nombreLbl;
     private javax.swing.JTextField tarjetaLbl;

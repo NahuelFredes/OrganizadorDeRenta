@@ -53,18 +53,17 @@
                                           <Component id="nameLabel" alignment="0" min="-2" pref="212" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                                  <Group type="103" groupAlignment="1" attributes="0">
                                                       <Component id="selecIFecha" min="-2" pref="198" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                           <Component id="jLabel4" alignment="0" min="-2" pref="198" max="-2" attributes="0"/>
                                                           <Component id="selecFFecha" alignment="0" min="-2" pref="198" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
-                                                  <Component id="jLabel5" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+                                                  <Component id="jLabel5" min="-2" pref="221" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                                   <Group type="102" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
                                                           <Component id="CantMenores" min="-2" pref="145" max="-2" attributes="0"/>
@@ -78,6 +77,7 @@
                                                       </Group>
                                                   </Group>
                                                   <Component id="jLabel7" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+                                                  <Component id="jLabel6" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Component id="BtnAlquilar" alignment="0" max="32767" attributes="0"/>

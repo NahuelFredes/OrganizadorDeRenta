@@ -10,11 +10,15 @@ public class MainMenu extends javax.swing.JFrame {
     private Calendar alquilerc;
     private Usuario user;
     private Alquiler alquiI;
+    private UsuarioPremium usup;
+    private Usuario usu;
 
-    public MainMenu(Usuario usuario, Alquiler alqui) {
+    public MainMenu(Usuario usuario, Alquiler alqui,UsuarioPremium usup,Usuario usu) {
         this.iniciarSesion = new IniciarSesion();
         this.user = usuario;
         this.alquiI = alqui;
+        this.usup = usup;
+        this.usu = usu;
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -120,6 +124,8 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_alquilarActionPerformed
 
     public void closeSesion() {
+
+        
         this.dispose();
         iniciarSesion.setVisible(true);
 
@@ -138,7 +144,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     public void abrirAlquiler() {
-        alquilerc = new Calendar(this, user, alquiI);
+        alquilerc = new Calendar(this, user, alquiI,usup,usu);
         this.setVisible(false);
         alquilerc.setVisible(true);
     }

@@ -13,17 +13,15 @@ public class Alquiler {
 
     private int CantAdults;
     private int CantNinos;
-    private int Dinero;
     private String strDateI;
     private String strDateF;
 
     public Alquiler() {
     }
 
-    public Alquiler(int CantAdults, int CantNinos, int Dinero, String strDateI, String strDateF) {
+    public Alquiler(int CantAdults, int CantNinos, String strDateI, String strDateF) {
         this.CantAdults = CantAdults;
         this.CantNinos = CantNinos;
-        this.Dinero = Dinero;
         this.strDateI = strDateI;
         this.strDateF = strDateF;
     }
@@ -42,14 +40,6 @@ public class Alquiler {
 
     public void setCantNinos(int CantNinos) {
         this.CantNinos = CantNinos;
-    }
-
-    public int getDinero() {
-        return Dinero;
-    }
-
-    public void setDinero(int Dinero) {
-        this.Dinero = Dinero;
     }
 
     public String getStrDateI() {

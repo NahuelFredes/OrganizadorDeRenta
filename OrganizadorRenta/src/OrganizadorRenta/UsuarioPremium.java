@@ -5,19 +5,26 @@ import java.util.Date;
 public class UsuarioPremium extends Usuario {
 
     private String tarjetaCredito;
+    private int descuento;
+    private boolean premium;
 
     public UsuarioPremium() {
 
     }
 
-    public UsuarioPremium(String nombre, String apellido, String contraseña, Date nacimiento, String correo) {
-        super(nombre, apellido, contraseña, nacimiento, correo);
+    public UsuarioPremium(String tarjetaCredito, int descuento, boolean premium, String nombre, String contraseña, String apellido, Date nacimiento, String correo, int costo, int costoPorDia, int cantDias) {
+        super(nombre, contraseña, apellido, nacimiento, correo, costo, costoPorDia, cantDias);
         this.tarjetaCredito = tarjetaCredito;
+        this.descuento = descuento;
+        this.premium = premium;
     }
 
-    @Override
-    public void precioAlquiler(int costo) {
-        this.costo = (costoPorDia * cantDias) - descuento;
+    public int getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(int descuento) {
+        this.descuento = descuento;
     }
 
     public void setTarjetaCredito(String tarjetaCredito) {
@@ -28,4 +35,23 @@ public class UsuarioPremium extends Usuario {
         return tarjetaCredito;
     }
 
+    public boolean isPremium() {
+        return premium;
+    }
+
+    public void setPremium(boolean premium) {
+        this.premium = premium;
+    }
+
+    public void calcDescuento(int costo) {
+        descuento = (30 * 100) / costo;
+    }
+/*
+    @Override
+    public int precioAlquiler() {
+        precio = (costoPorDia * cantDias) - descuento;
+        return precio;
+
+    }
+*/
 }

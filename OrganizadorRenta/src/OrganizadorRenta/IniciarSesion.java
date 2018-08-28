@@ -8,7 +8,9 @@ public class IniciarSesion extends javax.swing.JFrame {
     private MainMenu menu;
     private CrearCuenta cuenta;
     private Usuario persona = new Usuario();
-    private Alquiler alquiI  = new Alquiler();
+    private Alquiler alquiI = new Alquiler();
+    private UsuarioPremium usup;
+    private Usuario usu;
 
     public IniciarSesion() {
         initComponents();
@@ -143,7 +145,7 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_passwordActionPerformed
 
     private void btn_crearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearCuentaActionPerformed
-       abrirCrear();
+        abrirCrear();
     }//GEN-LAST:event_btn_crearCuentaActionPerformed
 
     /**
@@ -156,13 +158,15 @@ public class IniciarSesion extends javax.swing.JFrame {
         iniciarsesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
-    public void abrirCrear(){
+
+    public void abrirCrear() {
         CrearCuenta cuenta = new CrearCuenta();
         cuenta.setVisible(true);
         this.setVisible(false);
     }
+
     public void cerrar() {
-        MainMenu menu = new MainMenu(persona,alquiI);
+        MainMenu menu = new MainMenu(persona, alquiI,usup,usu);
         if (!lbl_password.getText().equals("") && (!lbl_nombre.getText().equals(""))) {
 
             this.setVisible(false);

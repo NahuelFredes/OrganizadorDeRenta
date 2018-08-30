@@ -42,14 +42,20 @@ public class UsuarioPremium extends Usuario {
     public void setPremium(boolean premium) {
         this.premium = premium;
     }
-
-    public void calcDescuento(int precio) {
-        descuento = (30 * 100) / precio;
+    public int calcPrecio(int costoPorDia ,int cantDias){
+        precio = costoPorDia * cantDias;
+        return precio;
+    }
+    public int calcDescuento(int precio) {
+        descuento = (30 * precio) / 100;
+        return descuento;
     }
 
+ 
+
     @Override
-    public int precioAlquiler() {
-        precio = (costoPorDia * cantDias) - descuento;
+    public int precioAlquiler(int costoPorDia,int cantDias,int descuento) {
+        precio = (costoPorDia * cantDias) - descuento;  
         return precio;
 
     }

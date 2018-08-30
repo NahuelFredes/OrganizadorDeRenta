@@ -95,7 +95,7 @@ public class Usuario {
     
 
     
-    public int precioAlquiler() {
+    public int precioAlquiler(int costoPorDia,int cantDias,int descuento) {
         precio = (costoPorDia * cantDias) ;
         return precio;
     }

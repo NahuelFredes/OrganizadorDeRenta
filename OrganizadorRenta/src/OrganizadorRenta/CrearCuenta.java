@@ -38,8 +38,8 @@ public class CrearCuenta extends javax.swing.JFrame {
         cuenta_premium = new javax.swing.JRadioButton();
         tarjetaLbl = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        contraLbl = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        contraLbl = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +83,12 @@ public class CrearCuenta extends javax.swing.JFrame {
 
         jLabel7.setText("Contraseña");
 
+        contraLbl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contraLblActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,7 +105,15 @@ public class CrearCuenta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(cuenta_premium)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(contraLbl, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tarjetaLbl, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,16 +121,8 @@ public class CrearCuenta extends javax.swing.JFrame {
                             .addComponent(mailLbl, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(apellidoLbl, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nombreLbl, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                            .addComponent(contraLbl, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(cuenta_premium)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(dateLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,6 +181,10 @@ public class CrearCuenta extends javax.swing.JFrame {
         volverInicio();
 
     }//GEN-LAST:event_btn_cancelActionPerformed
+
+    private void contraLblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraLblActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contraLblActionPerformed
 
     public void volverInicio() {
         this.dispose();
@@ -239,7 +249,7 @@ public class CrearCuenta extends javax.swing.JFrame {
     private javax.swing.JTextField apellidoLbl;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_crearCuenta;
-    private javax.swing.JTextField contraLbl;
+    private javax.swing.JPasswordField contraLbl;
     private javax.swing.JRadioButton cuenta_premium;
     private com.toedter.calendar.JDateChooser dateLbl;
     private com.toedter.calendar.JCalendar jCalendar1;

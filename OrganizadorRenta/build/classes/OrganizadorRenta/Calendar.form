@@ -15,6 +15,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="formPropertyChange"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -55,12 +58,10 @@
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="1" attributes="0">
                                                       <Component id="selecIFecha" min="-2" pref="198" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                          <Component id="jLabel4" alignment="0" min="-2" pref="198" max="-2" attributes="0"/>
-                                                          <Component id="selecFFecha" alignment="0" min="-2" pref="198" max="-2" attributes="0"/>
-                                                      </Group>
+                                                      <Component id="selecFFecha" min="-2" pref="198" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Component id="jLabel5" min="-2" pref="221" max="-2" attributes="0"/>
+                                                  <Component id="jLabel4" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -269,7 +270,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Te costara"/>
+        <Property name="text" type="java.lang.String" value="Te costara:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="costo">

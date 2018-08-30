@@ -9,16 +9,14 @@ public class MainMenu extends javax.swing.JFrame {
     private Administracion admin;
     private Calendar alquilerc;
     private Usuario user;
-    private Alquiler alquiI;
-    private UsuarioPremium usup;
-    private Usuario usu;
+    private Alquiler alqui2;
+    private UsuarioPremium usupM;
 
-    public MainMenu(Usuario usuario, Alquiler alqui,UsuarioPremium usup,Usuario usu) {
+    public MainMenu(Usuario usuario, Alquiler alqui,UsuarioPremium userC) {
         this.iniciarSesion = new IniciarSesion();
         this.user = usuario;
-        this.alquiI = alqui;
-        this.usup = usup;
-        this.usu = usu;
+        this.alqui2 = alqui;
+        this.usupM = userC;
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -144,7 +142,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     public void abrirAlquiler() {
-        alquilerc = new Calendar(this, user, alquiI,usup,usu);
+        alquilerc = new Calendar(this, user, alqui2,usupM);
         this.setVisible(false);
         alquilerc.setVisible(true);
     }

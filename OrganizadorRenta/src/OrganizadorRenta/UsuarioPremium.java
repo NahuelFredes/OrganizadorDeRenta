@@ -12,8 +12,8 @@ public class UsuarioPremium extends Usuario {
 
     }
 
-    public UsuarioPremium(String tarjetaCredito, int descuento, boolean premium, String nombre, String contraseña, String apellido, Date nacimiento, String correo, int costo, int costoPorDia, int cantDias) {
-        super(nombre, contraseña, apellido, nacimiento, correo, costo, costoPorDia, cantDias);
+    public UsuarioPremium(String tarjetaCredito, int descuento, boolean premium, String nombre, String contraseña, String apellido, Date nacimiento, String correo, int precio, int costoPorDia, int cantDias) {
+        super(nombre, contraseña, apellido, nacimiento, correo, precio, costoPorDia, cantDias);
         this.tarjetaCredito = tarjetaCredito;
         this.descuento = descuento;
         this.premium = premium;
@@ -43,15 +43,15 @@ public class UsuarioPremium extends Usuario {
         this.premium = premium;
     }
 
-    public void calcDescuento(int costo) {
-        descuento = (30 * 100) / costo;
+    public void calcDescuento(int precio) {
+        descuento = (30 * 100) / precio;
     }
-/*
+
     @Override
     public int precioAlquiler() {
         precio = (costoPorDia * cantDias) - descuento;
         return precio;
 
     }
-*/
+
 }

@@ -72,6 +72,7 @@ public class Calendar extends javax.swing.JFrame {
         CantMenores = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         costo = new javax.swing.JLabel();
+        Previsualizar = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -129,6 +130,13 @@ public class Calendar extends javax.swing.JFrame {
 
         jLabel8.setText("Te costara:");
 
+        Previsualizar.setText("previsualizar precio");
+        Previsualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrevisualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,18 +176,22 @@ public class Calendar extends javax.swing.JFrame {
                                                         .addGap(29, 29, 29)
                                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                             .addComponent(Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                                                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                             .addComponent(costo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                             .addComponent(BtnAlquilar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addGap(0, 250, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Previsualizar)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(27, 27, 27))))
         );
         layout.setVerticalGroup(
@@ -200,15 +212,12 @@ public class Calendar extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                                     .addComponent(calendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(44, 44, 44)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel8)))
+                                .addGap(37, 37, 37)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8)
+                                    .addComponent(Previsualizar))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(16, 16, 16)
@@ -218,7 +227,7 @@ public class Calendar extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(CantMayores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(costo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel4)))))
@@ -229,7 +238,7 @@ public class Calendar extends javax.swing.JFrame {
                     .addComponent(selecFFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addComponent(BtnAlquilar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,8 +272,12 @@ public class Calendar extends javax.swing.JFrame {
     }//GEN-LAST:event_calendarioPropertyChange
 
     private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
-        calcularPrecio();
+
     }//GEN-LAST:event_formPropertyChange
+
+    private void PrevisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrevisualizarActionPerformed
+        calcularPrecio();
+    }//GEN-LAST:event_PrevisualizarActionPerformed
 
     public void volverMenu() {
         this.dispose();
@@ -386,6 +399,7 @@ public class Calendar extends javax.swing.JFrame {
                 }
                 int cantdias = 0;
                 for (int i = 0; i < dias.size(); i++) {
+                    System.out.println(i);
                     usup3.setCantDias(i);
                     usu.setCantDias(i);
                     Date lDate = (Date) dias.get(i);
@@ -465,6 +479,63 @@ public class Calendar extends javax.swing.JFrame {
     }
 
     private void calcularPrecio() {
+        //dia inicio
+        Date dateI = selecIFecha.getDate();
+        alqui3.setStrDateI(DateFormat.getDateInstance().format(dateI));
+        String strDateI = alqui3.getStrDateI();
+        LocalDate localDate = dateI.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int IYear = localDate.getYear();
+        int IMonth = localDate.getMonthValue();
+        int IDay = localDate.getDayOfMonth();
+        int fechaI = IYear + IMonth + IDay;
+//dia final
+        Date dateF = selecFFecha.getDate();
+        alqui3.setStrDateF(DateFormat.getDateInstance().format(dateF));
+        LocalDate localDate2 = dateF.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        String strDateF = alqui3.getStrDateF();
+        int FYear = localDate2.getYear();
+        int FMonth = localDate2.getMonthValue();
+        int FDay = localDate2.getDayOfMonth();
+        int fechaF = FYear + FMonth + FDay;
+        List<Date> dias = new ArrayList<Date>();
+
+        String incio_dia = strDateI;
+        String final_dia = strDateF;
+
+        DateFormat formatter;
+
+        formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date startDate = null;
+        try {
+            startDate = (Date) formatter.parse(strDateI);
+        } catch (ParseException e) {
+
+            e.printStackTrace();
+        }
+        Date endDate = null;
+        try {
+            endDate = (Date) formatter.parse(strDateF);
+        } catch (ParseException e) {
+
+            e.printStackTrace();
+        }
+        long interval = 24 * 1000 * 60 * 60;
+        long endTime = endDate.getTime();
+        long curTime = startDate.getTime();
+        while (curTime <= endTime) {
+            dias.add(new Date(curTime));
+            curTime += interval;
+        }
+        int cantdias = 0;
+        for (int i = 0; i < dias.size(); i++) {
+            System.out.println(i);
+            usup3.setCantDias(i);
+            usu.setCantDias(i);
+            Date lDate = (Date) dias.get(i);
+            String ds = formatter.format(lDate);
+        }
+
         try {
             if (!usup3.getNombre().equals("")) {
                 int precio = usup3.calcPrecio(100, usup3.getCantDias() + 1);
@@ -502,6 +573,7 @@ public class Calendar extends javax.swing.JFrame {
     private javax.swing.JButton Cancelar;
     private javax.swing.JTextField CantMayores;
     private javax.swing.JTextField CantMenores;
+    private javax.swing.JButton Previsualizar;
     private javax.swing.JButton btnVolverMenu;
     private com.toedter.calendar.JCalendar calendario;
     private javax.swing.JLabel costo;

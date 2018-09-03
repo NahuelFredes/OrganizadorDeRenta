@@ -1,5 +1,6 @@
 package OrganizadorRenta;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class Calendar extends javax.swing.JFrame {
 
@@ -331,32 +333,36 @@ public class Calendar extends javax.swing.JFrame {
         int fechaF = FYear + FMonth + FDay;
         if (!strDateF.equals("") && !strDateI.equals("") && !CantMayores.getText().equals("") && !CantMenores.getText().equals("")) {
             if (fechaI > fechaF) {
-                String error = JOptionPane.showInputDialog(null, "Ha ingresado fechas incompatibles la fecha de inicio es mayor a la final", "Error", JOptionPane.DEFAULT_OPTION);
-
+                JOptionPane.showMessageDialog(null, "Ha ingresado fechas incompatibles la fecha de inicio es mayor a la final", "Error", JOptionPane.WARNING_MESSAGE);
             } else {
                 try {
-                    String diaItxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + strDateF.replace('/', '-') + ".txt";
+                    String diaItxt = "/" + strDateF.replace('/', '-') + ".txt";
                     File archivo = new File(diaItxt);
                     try (FileWriter escritor = new FileWriter(archivo)) {
-                        try {
-                            if (!usup3.getNombre().equals("")) {
-                                escritor.write("Alquilado por: " + nombre
-                                        + "\ncantidad de adultos: " + alqui3.getCant_adults()
-                                        + "\ncantidad de menores: " + alqui3.getCant_ninos()
-                                        + "\nCosto: " + usup3.getPrecio());
-                                escritor.close();
+                        if (archivo.exists()) {
+                            JOptionPane.showMessageDialog(null, "Ya esta alquilado alguno de los dias seleccionados", "Error", JOptionPane.WARNING_MESSAGE);
+                        } else {
+                            try {
+                                if (!usup3.getNombre().equals("")) {
+                                    escritor.write("Alquilado por: " + nombre
+                                            + "\ncantidad de adultos: " + alqui3.getCant_adults()
+                                            + "\ncantidad de menores: " + alqui3.getCant_ninos()
+                                            + "\nCosto: " + usup3.getPrecio());
+                                    escritor.close();
+                                }
+                            } catch (Exception e) {
                             }
-                        } catch (Exception e) {
-                        }
-                        try {
-                            if (!usu.getNombre().equals("")) {
-                                escritor.write("Alquilado por: " + nombre
-                                        + "\ncantidad de adultos: " + alqui3.getCant_adults()
-                                        + "\ncantidad de menores: " + alqui3.getCant_ninos()
-                                        + "\nCosto: " + usu.getPrecio());
-                                escritor.close();
+                            try {
+                                if (!usu.getNombre().equals("")) {
+                                    escritor.write("Alquilado por: " + nombre
+                                            + "\ncantidad de adultos: " + alqui3.getCant_adults()
+                                            + "\ncantidad de menores: " + alqui3.getCant_ninos()
+                                            + "\nCosto: " + usu.getPrecio());
+                                    escritor.close();
+                                }
+                            } catch (Exception e) {
+
                             }
-                        } catch (Exception e) {
                         }
                     }
 
@@ -405,28 +411,32 @@ public class Calendar extends javax.swing.JFrame {
                     Date lDate = (Date) dias.get(i);
                     String ds = formatter.format(lDate);
                     try {
-                        String diaTxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + ds.replace('/', '-') + ".txt";
+                        String diaTxt = "/" + ds.replace('/', '-') + ".txt";
                         File archivo = new File(diaTxt);
                         try (FileWriter escritor = new FileWriter(archivo)) {
-                            try {
-                                if (!usup3.getNombre().equals("")) {
-                                    escritor.write("Alquilado por: " + nombre
-                                            + "\ncantidad de adultos: " + alqui3.getCant_adults()
-                                            + "\ncantidad de menores: " + alqui3.getCant_ninos()
-                                            + "\nCosto: " + usup3.getPrecio());
-                                    escritor.close();
+                            if (!archivo.exists()) {
+                                try {
+                                    if (!usup3.getNombre().equals("")) {
+                                        escritor.write("Alquilado por: " + nombre
+                                                + "\ncantidad de adultos: " + alqui3.getCant_adults()
+                                                + "\ncantidad de menores: " + alqui3.getCant_ninos()
+                                                + "\nCosto: " + usup3.getPrecio());
+                                        escritor.close();
+                                    }
+                                } catch (Exception e) {
                                 }
-                            } catch (Exception e) {
-                            }
-                            try {
-                                if (!usu.getNombre().equals("")) {
-                                    escritor.write("Alquilado por: " + nombre
-                                            + "\ncantidad de adultos: " + alqui3.getCant_adults()
-                                            + "\ncantidad de menores: " + alqui3.getCant_ninos()
-                                            + "\nCosto: " + usu.getPrecio());
-                                    escritor.close();
+                                try {
+                                    if (!usu.getNombre().equals("")) {
+                                        escritor.write("Alquilado por: " + nombre
+                                                + "\ncantidad de adultos: " + alqui3.getCant_adults()
+                                                + "\ncantidad de menores: " + alqui3.getCant_ninos()
+                                                + "\nCosto: " + usu.getPrecio());
+                                        escritor.close();
+                                    }
+                                } catch (Exception e) {
                                 }
-                            } catch (Exception e) {
+                            } else {
+
                             }
 
                         }
@@ -463,7 +473,7 @@ public class Calendar extends javax.swing.JFrame {
         }
 
         String diaCalendar = SDay + "-" + SMonth + "-" + CYear;
-        String dia = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + diaCalendar + ".txt";
+        String dia = "/" + diaCalendar + ".txt";
         File archivodia = new File(dia);
         if (archivodia.exists()) {
             BufferedReader lector = new BufferedReader(new FileReader(archivodia));

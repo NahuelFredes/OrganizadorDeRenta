@@ -5,19 +5,31 @@
  */
 package OrganizadorRenta;
 
+import com.sun.istack.internal.logging.Logger;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.logging.Level;
+import static java.util.logging.Level.SEVERE;
 
-/**
- *
- * @author nahuelfredes
- */
-public class Chat extends javax.swing.JFrame {
+public class Chat extends javax.swing.JFrame implements Runnable {
 
     private MainMenu menu;
+    Socket cli;
+    Socket soc;
+    ServerSocket ss;
+    int puerto = 1024;
+    int puerto2 = 1025;
+    private Usuario user;
 
-    public Chat(MainMenu men) {
+    public Chat(MainMenu men, Usuario user) {
+        this.user = user;
         initComponents();
         this.menu = men;
         mostrar.setEditable(false);
@@ -34,7 +46,8 @@ public class Chat extends javax.swing.JFrame {
 
             }
         });
-
+        Thread myhilo = new Thread(this);
+        myhilo.start();
     }
 
     @SuppressWarnings("unchecked")
@@ -116,7 +129,25 @@ public class Chat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
-        enviarMsj();
+        //enviarMsj();
+        String ipDest = "192.168.1.9";
+        String ipOri = "192.168.1.9";
+        try {
+            InetAddress direccion = InetAddress.getLocalHost();
+            String ip = direccion.getHostAddress();
+            cli = new Socket(ipDest, puerto);
+            Paquete pack = new Paquete();
+            pack.setIpDestino(ipDest);
+            pack.setIpOrigen(ipOri);
+            pack.setMensaje(escribir.getText());
+            pack.setUserName(user.getNombre());
+            ObjectOutputStream out = new ObjectOutputStream(cli.getOutputStream());
+            out.writeObject(pack);
+            cli.close();
+
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }//GEN-LAST:event_btn_enviarActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
@@ -149,4 +180,26 @@ public class Chat extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea mostrar;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void run() {
+        try {
+            ss = new ServerSocket(puerto2);
+            String ipd, ipo, usser, msj;
+            Paquete pack;
+            while (true) {
+                soc = ss.accept();
+                ObjectInputStream in = new ObjectInputStream(soc.getInputStream());
+                pack = (Paquete) in.readObject();
+                ipd = pack.getIpDestino();
+                ipo = pack.getIpOrigen();
+                usser = pack.getUserName();
+                msj = pack.getMensaje();
+                mostrar.append(ipo+ ": "+ ipd +"\n");
+                mostrar.append(usser + ": "+ msj+"\n");
+                soc.close();
+            }
+        } catch (Exception e) {
+        }
+    }
 }

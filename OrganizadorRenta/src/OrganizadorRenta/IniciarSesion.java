@@ -158,13 +158,13 @@ public class IniciarSesion extends javax.swing.JFrame {
     }
 
     public void abrirCrear() {
-        CrearCuenta cuenta = new CrearCuenta(usuario,alqui,usup);
+        CrearCuenta cuenta = new CrearCuenta(usuario, alqui, usup);
         cuenta.setVisible(true);
         this.setVisible(false);
     }
 
     public void cerrar() {
-        MainMenu menu = new MainMenu(usuario, alqui,usup);
+        MainMenu menu = new MainMenu(usuario, alqui, usup);
         if (!lbl_password.getText().equals("") && (!lbl_nombre.getText().equals(""))) {
 
             this.setVisible(false);

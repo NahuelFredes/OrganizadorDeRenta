@@ -11,6 +11,7 @@ public class MainMenu extends javax.swing.JFrame {
     private Usuario user;
     private Alquiler alqui2;
     private UsuarioPremium usupM;
+    private Servidor ser ;
 
     public MainMenu(Usuario usuario, Alquiler alqui,UsuarioPremium userC) {
         this.iniciarSesion = new IniciarSesion();
@@ -115,6 +116,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void botton_chatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botton_chatActionPerformed
         abrirChat();
+        ser = new Servidor( user);
+        ser.setVisible(true);
     }//GEN-LAST:event_botton_chatActionPerformed
 
     private void boton_alquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_alquilarActionPerformed
@@ -130,9 +133,11 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     public void abrirChat() {
-        chat = new Chat(this);
+        chat = new Chat(this, user);
+        
         this.setVisible(false);
         chat.setVisible(true);
+        
     }
 
     public void abrirAdmin() {

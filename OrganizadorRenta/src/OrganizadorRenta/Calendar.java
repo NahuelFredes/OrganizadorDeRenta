@@ -334,9 +334,10 @@ public class Calendar extends javax.swing.JFrame {
         if (!strDateF.equals("") && !strDateI.equals("") && !CantMayores.getText().equals("") && !CantMenores.getText().equals("")) {
             if (fechaI > fechaF) {
                 JOptionPane.showMessageDialog(null, "Ha ingresado fechas incompatibles la fecha de inicio es mayor a la final", "Error", JOptionPane.WARNING_MESSAGE);
+
             } else {
                 try {
-                    String diaItxt = "/" + strDateF.replace('/', '-') + ".txt";
+                    String diaItxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + strDateF.replace('/', '-') + ".txt";
                     File archivo = new File(diaItxt);
                     try (FileWriter escritor = new FileWriter(archivo)) {
                         if (archivo.exists()) {
@@ -411,7 +412,7 @@ public class Calendar extends javax.swing.JFrame {
                     Date lDate = (Date) dias.get(i);
                     String ds = formatter.format(lDate);
                     try {
-                        String diaTxt = "/" + ds.replace('/', '-') + ".txt";
+                        String diaTxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + ds.replace('/', '-') + ".txt";
                         File archivo = new File(diaTxt);
                         try (FileWriter escritor = new FileWriter(archivo)) {
                             if (!archivo.exists()) {
@@ -473,7 +474,7 @@ public class Calendar extends javax.swing.JFrame {
         }
 
         String diaCalendar = SDay + "-" + SMonth + "-" + CYear;
-        String dia = "/" + diaCalendar + ".txt";
+        String dia = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + diaCalendar + ".txt";
         File archivodia = new File(dia);
         if (archivodia.exists()) {
             BufferedReader lector = new BufferedReader(new FileReader(archivodia));

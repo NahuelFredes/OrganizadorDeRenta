@@ -16,20 +16,22 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nombre, String contraseña, String apellido, Date nacimiento, String correo, int costo, int costoPorDia, int cantDias) {
+    public Usuario(String nombre, String contraseña, String apellido, Date nacimiento, String correo, int precio, int costoPorDia, int cantDias) {
         this.nombre = nombre;
         this.contraseña = contraseña;
         this.apellido = apellido;
         this.nacimiento = nacimiento;
         this.correo = correo;
-        this.precio = costo;
+        this.precio = precio;
         this.costoPorDia = costoPorDia;
         this.cantDias = cantDias;
     }
+    
 
     public String getNombre() {
         return nombre;
     }
+    
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -90,6 +92,7 @@ public class Usuario {
     public void setCantDias(int cantDias) {
         this.cantDias = cantDias;
     }
+    
 
     
     public int precioAlquiler() {

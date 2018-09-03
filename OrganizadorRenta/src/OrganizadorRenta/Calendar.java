@@ -1,6 +1,5 @@
 package OrganizadorRenta;
 
-import java.beans.PropertyChangeEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,16 +21,15 @@ import javax.swing.JOptionPane;
 public class Calendar extends javax.swing.JFrame {
 
     private MainMenu menu;
-    private Alquiler alqui = new Alquiler();
+    private Alquiler alqui3;
     private Usuario usu;
-    private UsuarioPremium usup;
+    private UsuarioPremium usup3;
 
-    public Calendar(MainMenu men, Usuario usuario, Alquiler alqui, UsuarioPremium usup, Usuario usu) {
+    public Calendar(MainMenu men, Usuario usuario, Alquiler alqui, UsuarioPremium usupM) {
         initComponents();
         this.menu = men;
-        this.alqui = alqui;
-        this.usup = usup;
-        this.usu = usu;
+        this.alqui3 = alqui;
+        this.usup3 = usupM;
         try {
             if (!usuario.getNombre().equals("")) {
                 nameLabel.setText(usuario.getNombre());
@@ -39,8 +37,8 @@ public class Calendar extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         try {
-            if (!usup.getNombre().equals("")) {
-                nameLabel.setText(usup.getNombre());
+            if (!usup3.getNombre().equals("")) {
+                nameLabel.setText(usup3.getNombre());
             }
         } catch (Exception e) {
         }
@@ -166,8 +164,8 @@ public class Calendar extends javax.swing.JFrame {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(layout.createSequentialGroup()
                                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(CantMenores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(CantMayores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                            .addComponent(CantMayores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(CantMenores, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                         .addGap(29, 29, 29)
                                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                             .addComponent(Cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
@@ -221,18 +219,18 @@ public class Calendar extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(CantMayores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(costo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel4)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(CantMenores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Cancelar))
+                        .addComponent(Cancelar)
+                        .addComponent(CantMenores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(selecFFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addComponent(BtnAlquilar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,18 +270,28 @@ public class Calendar extends javax.swing.JFrame {
     public void Cancel() {
         CantMayores.setText("");
         CantMenores.setText("");
-        costo.setText("");
     }
 
     public void Alquilar() {
-        alqui.setCantAdults(Integer.parseInt(CantMayores.getText()));
-        alqui.setCantNinos(Integer.parseInt(CantMenores.getText()));
-        int precio2 = usup.precioAlquiler();
+        usup3.setCostoPorDia(10);
+        usup3.setCantDias(10);
+        usup3.setDescuento(0);
+        int precio2 = usup3.precioAlquiler();
+        System.out.println(CantMayores.getText());
+
+        int adultos = Integer.parseInt(CantMayores.getText());
+        int menores = Integer.parseInt(CantMenores.getText());
+        System.out.println(adultos);
+        System.out.println(menores);
+        alqui3.setCant_adults(adultos);
+        alqui3.setCant_ninos(menores);
+        System.out.println(alqui3.getCant_adults());
+        System.out.println(alqui3.getCant_ninos());
 
 //dia inicio
         Date dateI = selecIFecha.getDate();
-        alqui.setStrDateI(DateFormat.getDateInstance().format(dateI));
-        String strDateI = alqui.getStrDateI();
+        alqui3.setStrDateI(DateFormat.getDateInstance().format(dateI));
+        String strDateI = alqui3.getStrDateI();
         LocalDate localDate = dateI.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int IYear = localDate.getYear();
         int IMonth = localDate.getMonthValue();
@@ -291,15 +299,15 @@ public class Calendar extends javax.swing.JFrame {
         int fechaI = IYear + IMonth + IDay;
 //dia final
         Date dateF = selecFFecha.getDate();
-        alqui.setStrDateF(DateFormat.getDateInstance().format(dateF));
+        alqui3.setStrDateF(DateFormat.getDateInstance().format(dateF));
         LocalDate localDate2 = dateF.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-        String strDateF = alqui.getStrDateF();
+        String strDateF = alqui3.getStrDateF();
         int FYear = localDate2.getYear();
         int FMonth = localDate2.getMonthValue();
         int FDay = localDate2.getDayOfMonth();
         int fechaF = FYear + FMonth + FDay;
-        if (!strDateF.equals("") && !strDateI.equals("") && !CantMayores.getText().equals("") && !CantMenores.getText().equals("") && !costo.getText().equals("")) {
+        if (!strDateF.equals("") && !strDateI.equals("") && !CantMayores.getText().equals("") && !CantMenores.getText().equals("")) {
             if (fechaI > fechaF) {
                 String error = JOptionPane.showInputDialog(null, "Ha ingresado fechas incompatibles la fecha de inicio es mayor a la final", "Error", JOptionPane.DEFAULT_OPTION);
 
@@ -354,7 +362,6 @@ public class Calendar extends javax.swing.JFrame {
                     Date lDate = (Date) dias.get(i);
                     String ds = formatter.format(lDate);
                     try {
-                        System.out.println(ds);
                         String diaTxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + ds.replace('/', '-') + ".txt";
                         File archivo = new File(diaTxt);
                         try (FileWriter escritor = new FileWriter(archivo)) {
@@ -380,10 +387,8 @@ public class Calendar extends javax.swing.JFrame {
         String SMonth = "";
         if (CMonth < 9) {
             SMonth = "0" + CMonth;
-            System.out.println(SMonth);
         } else {
             SMonth = "" + CMonth;
-            System.out.println(SMonth);
         }
         int CDay = localDate3.getDayOfMonth();
         String diaCalendar = CDay + "-" + SMonth + "-" + CYear;

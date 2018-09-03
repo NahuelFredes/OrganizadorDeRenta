@@ -7,11 +7,15 @@ public class CrearCuenta extends javax.swing.JFrame {
 
     private IniciarSesion iniciarSesion;
     private MainMenu menu;
-    private UsuarioPremium usup = new UsuarioPremium();
-    private Usuario usu = new Usuario();
+    private Alquiler alquiI;
+    private Usuario userc;
+    private UsuarioPremium usupC;
 
-    public CrearCuenta() {
+    public CrearCuenta(Usuario usuario, Alquiler alqui, UsuarioPremium usup) {
         initComponents();
+        this.userc = usuario;
+        this.alquiI = alqui;
+        this.usupC = usup;
         this.iniciarSesion = new IniciarSesion();
     }
 
@@ -187,20 +191,20 @@ public class CrearCuenta extends javax.swing.JFrame {
     }
 
     public void crearCuenta() {
-        MainMenu menu = new MainMenu(null, null, usup,usu);
+        MainMenu menu = new MainMenu(userc, alquiI, usupC);
 
         if (cuenta_premium.isSelected()) {
             if (!nombreLbl.getText().equals("") && (!apellidoLbl.getText().equals("")) && (!contraLbl.getText().equals("")) && (!mailLbl.getText().equals("")) && (!tarjetaLbl.getText().equals("")) && (!dateLbl.getDate().equals(null))) {
                 int costo = 100;
-                usup.setNombre(nombreLbl.getText());
-                usup.setApellido(apellidoLbl.getText());
-                usup.setContraseña(contraLbl.getText());
-                usup.setCorreo(mailLbl.getText());
-                usup.setNacimiento(dateLbl.getDate());
-                usup.setTarjetaCredito(tarjetaLbl.getText());
-                usup.setPremium(true);
-                usup.setDescuento(30);
-                usup.calcDescuento(costo);
+                usupC.setNombre(nombreLbl.getText());
+                usupC.setApellido(apellidoLbl.getText());
+                usupC.setContraseña(contraLbl.getText());
+                usupC.setCorreo(mailLbl.getText());
+                usupC.setNacimiento(dateLbl.getDate());
+                usupC.setTarjetaCredito(tarjetaLbl.getText());
+                usupC.setPremium(true);
+                usupC.setDescuento(30);
+                usupC.calcDescuento(costo);
                 this.setVisible(false);
                 menu.setVisible(true);
             } else {
@@ -212,11 +216,11 @@ public class CrearCuenta extends javax.swing.JFrame {
                 tarjetaLbl.setText("");
             }
         } else if (!nombreLbl.getText().equals("") && (!apellidoLbl.getText().equals("")) && (!contraLbl.getText().equals("")) && (!mailLbl.getText().equals("")) && (!dateLbl.getDate().equals(null))) {
-            usu.setNombre(nombreLbl.getText());
-            usu.setApellido(apellidoLbl.getText());
-            usu.setContraseña(contraLbl.getText());
-            usu.setCorreo(mailLbl.getText());
-            usu.setNacimiento(dateLbl.getDate());
+            userc.setNombre(nombreLbl.getText());
+            userc.setApellido(apellidoLbl.getText());
+            userc.setContraseña(contraLbl.getText());
+            userc.setCorreo(mailLbl.getText());
+            userc.setNacimiento(dateLbl.getDate());
             this.setVisible(false);
             menu.setVisible(true);
         } else {

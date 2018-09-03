@@ -11,35 +11,35 @@ package OrganizadorRenta;
  */
 public class Alquiler {
 
-    private int CantAdults;
-    private int CantNinos;
+    private int cant_adults;
+    private int cant_ninos;
     private String strDateI;
     private String strDateF;
 
     public Alquiler() {
     }
 
-    public Alquiler(int CantAdults, int CantNinos, String strDateI, String strDateF) {
-        this.CantAdults = CantAdults;
-        this.CantNinos = CantNinos;
+    public Alquiler(int cant_adults, int cant_ninos, String strDateI, String strDateF) {
+        this.cant_adults = cant_adults;
+        this.cant_ninos = cant_ninos;
         this.strDateI = strDateI;
         this.strDateF = strDateF;
     }
 
-    public int getCantAdults() {
-        return CantAdults;
+    public int getCant_adults() {
+        return cant_adults;
     }
 
-    public void setCantAdults(int CantAdults) {
-        this.CantAdults = CantAdults;
+    public void setCant_adults(int cant_adults) {
+        this.cant_adults = cant_adults;
     }
 
-    public int getCantNinos() {
-        return CantNinos;
+    public int getCant_ninos() {
+        return cant_ninos;
     }
 
-    public void setCantNinos(int CantNinos) {
-        this.CantNinos = CantNinos;
+    public void setCant_ninos(int cant_ninos) {
+        this.cant_ninos = cant_ninos;
     }
 
     public String getStrDateI() {

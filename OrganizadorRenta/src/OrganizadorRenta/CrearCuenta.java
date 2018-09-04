@@ -1,6 +1,12 @@
 package OrganizadorRenta;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class CrearCuenta extends javax.swing.JFrame {
@@ -174,7 +180,11 @@ public class CrearCuenta extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreLblActionPerformed
 
     private void btn_crearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearCuentaActionPerformed
-        crearCuenta();
+        try {
+            crearCuenta();
+        } catch (IOException ex) {
+            Logger.getLogger(CrearCuenta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_crearCuentaActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
@@ -200,7 +210,7 @@ public class CrearCuenta extends javax.swing.JFrame {
         this.dateLbl = dateLbl;
     }
 
-    public void crearCuenta() {
+    public void crearCuenta() throws IOException {
         MainMenu menu = new MainMenu(userc, alquiI, usupC);
 
         if (cuenta_premium.isSelected()) {
@@ -211,10 +221,33 @@ public class CrearCuenta extends javax.swing.JFrame {
                 usupC.setContraseña(contraLbl.getText());
                 usupC.setCorreo(mailLbl.getText());
                 usupC.setNacimiento(dateLbl.getDate());
+                Date dateBirthP = dateLbl.getDate();
+                String strDateBirthP = DateFormat.getDateInstance().format(dateBirthP);
                 usupC.setTarjetaCredito(tarjetaLbl.getText());
                 usupC.setPremium(true);
                 usupC.setDescuento(30);
                 usupC.calcDescuento(costo);
+                String datosP = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/cuentas/" + usupC.getNombre() + usupC.getApellido() + ".txt";
+                File archivo = new File(datosP);
+                try (FileWriter writer = new FileWriter(archivo)) {
+                    writer.write("Nombre del Usuario: " + usupC.getNombre()
+                            + "\nApellido del Usuario: " + usupC.getApellido()
+                            + "\nConstraseña del Usuario: " + usupC.getContraseña()
+                            + "\nCorreo del Usuario: " + usupC.getCorreo()
+                            + "\nFecha de nacimiento del Usuario: " + strDateBirthP
+                            + "\nEl Usuario es Premium: " + " Si"
+                            + "\nTarjeta de credito del Usuario: " + usupC.getTarjetaCredito()
+                    );
+                    writer.close();
+                }
+                String directionIC = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/IC/" + usupC.getNombre() + ".txt";
+                File archivoIC = new File(directionIC);
+                try (FileWriter writer = new FileWriter(archivoIC)) {
+                    writer.write(
+                            usupC.getContraseña()
+                    );
+                    writer.close();
+                }
                 this.setVisible(false);
                 menu.setVisible(true);
             } else {
@@ -231,6 +264,28 @@ public class CrearCuenta extends javax.swing.JFrame {
             userc.setContraseña(contraLbl.getText());
             userc.setCorreo(mailLbl.getText());
             userc.setNacimiento(dateLbl.getDate());
+            Date dateBirthN = dateLbl.getDate();
+            String strDateBirthN = DateFormat.getDateInstance().format(dateBirthN);
+            String datosN = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/cuentas/" + userc.getNombre() + userc.getApellido() + ".txt";
+            File archivo = new File(datosN);
+            try (FileWriter writer = new FileWriter(archivo)) {
+                writer.write("Nombre del Usuario: " + userc.getNombre()
+                        + "\nApellido del Usuario: " + userc.getApellido()
+                        + "\nConstraseña del Usuario: " + userc.getContraseña()
+                        + "\nCorreo del Usuario: " + userc.getCorreo()
+                        + "\nFecha de nacimiento del Usuario: " + strDateBirthN
+                        + "\nEl Usuario es Premium: " + " NO"
+                );
+                writer.close();
+            }
+            String directionIC = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/IC/" + userc.getNombre() + ".txt";
+            File archivoIC = new File(directionIC);
+            try (FileWriter writer = new FileWriter(archivoIC)) {
+                writer.write(
+                        userc.getContraseña()
+                );
+                writer.close();
+            }
             this.setVisible(false);
             menu.setVisible(true);
         } else {

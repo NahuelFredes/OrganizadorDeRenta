@@ -1,5 +1,11 @@
 package OrganizadorRenta;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -28,6 +34,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         lbl_nombre = new javax.swing.JTextField();
         lbl_password = new javax.swing.JPasswordField();
         btn_crearCuenta = new javax.swing.JButton();
+        premium = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +77,8 @@ public class IniciarSesion extends javax.swing.JFrame {
             }
         });
 
+        premium.setText("Es premium?");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,13 +100,14 @@ public class IniciarSesion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_crearCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(remember)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_crearCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(premium))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -114,7 +124,9 @@ public class IniciarSesion extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(lbl_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(remember)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(remember)
+                    .addComponent(premium))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_crearCuenta)
@@ -126,8 +138,12 @@ public class IniciarSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarActionPerformed
-        usuario.setNombre(lbl_nombre.getText());
-        cerrar();
+
+        try {
+            cerrar();
+        } catch (IOException ex) {
+            Logger.getLogger(IniciarSesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ingresarActionPerformed
 
     private void rememberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rememberActionPerformed
@@ -158,18 +174,62 @@ public class IniciarSesion extends javax.swing.JFrame {
     }
 
     public void abrirCrear() {
-        CrearCuenta cuenta = new CrearCuenta(usuario,alqui,usup);
+        CrearCuenta cuenta = new CrearCuenta(usuario, alqui, usup);
         cuenta.setVisible(true);
         this.setVisible(false);
     }
 
-    public void cerrar() {
-        MainMenu menu = new MainMenu(usuario, alqui,usup);
-        if (!lbl_password.getText().equals("") && (!lbl_nombre.getText().equals(""))) {
+    public void cerrar() throws IOException {
+        String inicioNombre = lbl_nombre.getText();
+        String inicioPassword = lbl_password.getText();
 
-            this.setVisible(false);
-            menu.setVisible(true);
+        MainMenu menu = new MainMenu(usuario, alqui, usup);
+
+        if (!lbl_password.getText().equals("") && (!lbl_nombre.getText().equals(""))) {
+            if (premium.isSelected()) {
+                String ISP = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/IC/Premium/" + inicioNombre + ".txt";
+                File archivoisP = new File(ISP);
+                if (archivoisP.exists()) {
+                    BufferedReader lector = new BufferedReader(new FileReader(archivoisP));
+                    String linea = lector.readLine();
+                    if (linea.equals(inicioPassword)) {
+                        usup.setNombre(inicioNombre);
+                        usup.setContraseña(inicioPassword);
+                        usup.setPremium(true);
+                        System.out.println(usup.isPremium());
+                        this.setVisible(false);
+                        menu.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Contraseña incorrecta intente nuevamente", "Error", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Esa cuenta no esta registrada pruebe nuevamente", "Error", JOptionPane.WARNING_MESSAGE);
+                };
+
+            } else {
+                String IS = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/IC/" + inicioNombre + ".txt";
+                File archivois = new File(IS);
+                if (archivois.exists()) {
+                    BufferedReader lector = new BufferedReader(new FileReader(archivois));
+                    String linea = lector.readLine();
+                    if (linea.equals(inicioPassword)) {
+                        usuario.setNombre(inicioNombre);
+                        usuario.setContraseña(inicioPassword);
+                        this.setVisible(false);
+                        menu.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Contraseña incorrecta intente nuevamente", "Error", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Esa cuenta no esta registrada pruebe nuevamente", "Error", JOptionPane.WARNING_MESSAGE);
+                };
+
+            }
+
         }
+
         if (lbl_nombre.getText().equals("")) {
             JOptionPane.showConfirmDialog(null, "Usted no ha completado su nombre de usuario", "Ingresar", JOptionPane.CANCEL_OPTION);
         } else {
@@ -198,10 +258,7 @@ public class IniciarSesion extends javax.swing.JFrame {
 
         }
 
-        usuario.setContraseña(lbl_password.getText());
     }
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_crearCuenta;
     private javax.swing.JButton ingresar;
@@ -210,6 +267,7 @@ public class IniciarSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField lbl_nombre;
     private javax.swing.JPasswordField lbl_password;
+    private javax.swing.JCheckBox premium;
     private javax.swing.JCheckBox remember;
     // End of variables declaration//GEN-END:variables
 }

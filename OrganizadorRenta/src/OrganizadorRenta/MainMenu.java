@@ -136,7 +136,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     public void abrirAdmin() {
-        admin = new Administracion(this);
+        admin = new Administracion(this,user,alqui2,usupM);
         this.setVisible(false);
         admin.setVisible(true);
     }

@@ -340,9 +340,9 @@ public class Calendar extends javax.swing.JFrame {
                     String diaItxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + strDateF.replace('/', '-') + ".txt";
                     File archivo = new File(diaItxt);
                     try (FileWriter escritor = new FileWriter(archivo)) {
-                        if (archivo.exists()) {
-                            JOptionPane.showMessageDialog(null, "Ya esta alquilado alguno de los dias seleccionados", "Error", JOptionPane.WARNING_MESSAGE);
-                        } else {
+                        //if (archivo.exists()) {
+                            //JOptionPane.showMessageDialog(null, "Ya esta alquilado alguno de los dias seleccionados", "Error", JOptionPane.WARNING_MESSAGE);
+                        //} else {
                             try {
                                 if (!usup3.getNombre().equals("")) {
                                     escritor.write("Alquilado por: " + nombre
@@ -364,7 +364,7 @@ public class Calendar extends javax.swing.JFrame {
                             } catch (Exception e) {
 
                             }
-                        }
+                        //}
                     }
 
                 } catch (IOException e) {
@@ -376,9 +376,6 @@ public class Calendar extends javax.swing.JFrame {
 
             } else {
                 List<Date> dias = new ArrayList<Date>();
-
-                String incio_dia = strDateI;
-                String final_dia = strDateF;
 
                 DateFormat formatter;
 
@@ -415,29 +412,26 @@ public class Calendar extends javax.swing.JFrame {
                         String diaTxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + ds.replace('/', '-') + ".txt";
                         File archivo = new File(diaTxt);
                         try (FileWriter escritor = new FileWriter(archivo)) {
-                            if (!archivo.exists()) {
-                                try {
-                                    if (!usup3.getNombre().equals("")) {
-                                        escritor.write("Alquilado por: " + nombre
-                                                + "\ncantidad de adultos: " + alqui3.getCant_adults()
-                                                + "\ncantidad de menores: " + alqui3.getCant_ninos()
-                                                + "\nCosto: " + usup3.getPrecio());
-                                        escritor.close();
-                                    }
-                                } catch (Exception e) {
-                                }
-                                try {
-                                    if (!usu.getNombre().equals("")) {
-                                        escritor.write("Alquilado por: " + nombre
-                                                + "\ncantidad de adultos: " + alqui3.getCant_adults()
-                                                + "\ncantidad de menores: " + alqui3.getCant_ninos()
-                                                + "\nCosto: " + usu.getPrecio());
-                                        escritor.close();
-                                    }
-                                } catch (Exception e) {
-                                }
-                            } else {
 
+                            try {
+                                if (!usup3.getNombre().equals("")) {
+                                    escritor.write("Alquilado por: " + nombre
+                                            + "\ncantidad de adultos: " + alqui3.getCant_adults()
+                                            + "\ncantidad de menores: " + alqui3.getCant_ninos()
+                                            + "\nCosto: " + usup3.getPrecio());
+                                    escritor.close();
+                                }
+                            } catch (Exception e) {
+                            }
+                            try {
+                                if (!usu.getNombre().equals("")) {
+                                    escritor.write("Alquilado por: " + nombre
+                                            + "\ncantidad de adultos: " + alqui3.getCant_adults()
+                                            + "\ncantidad de menores: " + alqui3.getCant_ninos()
+                                            + "\nCosto: " + usu.getPrecio());
+                                    escritor.close();
+                                }
+                            } catch (Exception e) {
                             }
 
                         }
@@ -462,12 +456,12 @@ public class Calendar extends javax.swing.JFrame {
         int CDay = localDate3.getDayOfMonth();
         String SMonth = "";
         String SDay = "";
-        if (CMonth < 9) {
+        if (CMonth <= 9) {
             SMonth = "0" + CMonth;
         } else {
             SMonth = "" + CMonth;
         }
-        if (CDay < 9) {
+        if (CDay <= 9) {
             SDay = "0" + CDay;
         } else {
             SDay = "" + CDay;

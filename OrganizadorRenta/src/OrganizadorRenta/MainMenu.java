@@ -1,5 +1,8 @@
 package OrganizadorRenta;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 public class MainMenu extends javax.swing.JFrame {
@@ -114,7 +117,13 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_CerrarActionPerformed
 
     private void botton_chatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botton_chatActionPerformed
-        abrirChat();
+        try {
+            abrirChat();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_botton_chatActionPerformed
 
     private void boton_alquilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_alquilarActionPerformed
@@ -128,7 +137,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     }
 
-    public void abrirChat() {
+    public void abrirChat() throws SQLException, ClassNotFoundException {
         chat = new Chat(this,user);
         this.setVisible(false);
         chat.setVisible(true);

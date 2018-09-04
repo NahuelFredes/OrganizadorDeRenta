@@ -170,9 +170,9 @@ public class Chat extends javax.swing.JFrame {
 
         mostrar.setText("");
         con.setMensajes(con.obtener(), remitente, escribir.getText());
-        mostrar.append(con.getMensajes(con.obtener()));
-        
+        mostrar.append(con.getMensajes(con.obtener()));       
         escribir.setText("");
+        System.out.println(con.obtener());
     }
 
     private class Lector implements Runnable {

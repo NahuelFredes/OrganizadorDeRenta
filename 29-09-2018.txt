@@ -1,4 +1,4 @@
-Alquilado por: 123
+Alquilado por: rwar
 cantidad de adultos: 123
-cantidad de menores: 123
-Costo: 300
+cantidad de menores: 321
+Costo: 280

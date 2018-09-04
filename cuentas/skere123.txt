@@ -1,0 +1,7 @@
+Nombre del Usuario: skere
+Apellido del Usuario: 123
+Constraseña del Usuario: 321
+Correo del Usuario: 123
+Fecha de nacimiento del Usuario: 27/09/2018
+El Usuario es Premium:  Si
+Tarjeta de credito del Usuario: fafsadasda

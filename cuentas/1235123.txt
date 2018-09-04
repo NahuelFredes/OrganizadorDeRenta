@@ -1,0 +1,6 @@
+Nombre del Usuario: 1235
+Apellido del Usuario: 123
+Constraseña del Usuario: 123
+Correo del Usuario: 123
+Fecha de nacimiento del Usuario: 18/09/2018
+El Usuario es Premium:  NO

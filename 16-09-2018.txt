@@ -1,0 +1,4 @@
+Alquilado por: 123
+cantidad de adultos: 123
+cantidad de menores: 12
+Costo: 300

@@ -166,7 +166,7 @@ public class IniciarSesion extends javax.swing.JFrame {
     }
 
     public void cerrar() {
-        MainMenu menu = new MainMenu(persona, alquiI,usup,usu);
+        MainMenu menu = new MainMenu(persona, alquiI, usup, usu);
         if (!lbl_password.getText().equals("") && (!lbl_nombre.getText().equals(""))) {
 
             this.setVisible(false);

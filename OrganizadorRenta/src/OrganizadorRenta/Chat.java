@@ -8,6 +8,9 @@ package OrganizadorRenta;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,25 +19,39 @@ import java.awt.event.KeyEvent;
 public class Chat extends javax.swing.JFrame {
 
     private MainMenu menu;
-
-    public Chat(MainMenu men) {
+    
+    public Chat(MainMenu men, Usuario user) throws SQLException, ClassNotFoundException {
+        
+        con = new Conexion();
+        con.crearTabla(con.obtener());
+        this.remitente = user.getNombre();
         initComponents();
         this.menu = men;
         mostrar.setEditable(false);
         escribir.addKeyListener(new KeyAdapter() {
-
+            
             @Override
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
                 if (key == KeyEvent.VK_ENTER) {
 
-                    enviarMsj();
+                    try {
+                        enviarMsj();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                 }
 
             }
         });
 
+    }
+
+    Chat(MainMenu aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @SuppressWarnings("unchecked")
@@ -49,6 +66,7 @@ public class Chat extends javax.swing.JFrame {
         btn_volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         mostrar.setColumns(20);
         mostrar.setRows(5);
@@ -116,28 +134,62 @@ public class Chat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
-        enviarMsj();
+        try {
+            enviarMsj();
+        } catch (SQLException ex) {
+            Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_enviarActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
-        closeChat();
+        try {
+            closeChat();
+        } catch (SQLException ex) {
+            Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_volverActionPerformed
 
     private void escribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escribirActionPerformed
 
     }//GEN-LAST:event_escribirActionPerformed
 
-    public void closeChat() {
+    public void closeChat() throws SQLException, ClassNotFoundException {
         this.dispose();
         menu.setVisible(true);
+        con.borrarTabla(con.obtener());
+        
 
     }
 
-    public void enviarMsj() {
-        String escrito = escribir.getText();
-        mostrar.append(escrito + "\n");
-        escribir.setText("");
+    public void enviarMsj() throws SQLException, ClassNotFoundException {
+        
 
+        mostrar.setText("");
+        con.setMensajes(con.obtener(), remitente, escribir.getText());
+        mostrar.append(con.getMensajes(con.obtener()));
+        
+        escribir.setText("");
+    }
+
+    private class Lector implements Runnable {
+
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    mostrar.setText(con.getMensajes(con.obtener()));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
     }
 
 
@@ -149,4 +201,7 @@ public class Chat extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea mostrar;
     // End of variables declaration//GEN-END:variables
+    private Conexion con;
+    private Thread t;
+    private String remitente;
 }

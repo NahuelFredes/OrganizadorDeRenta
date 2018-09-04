@@ -1,6 +1,4 @@
-
 package OrganizadorRenta;
-
 
 public class Administracion extends javax.swing.JFrame {
 
@@ -48,13 +46,13 @@ public class Administracion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_volverAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverAdminActionPerformed
-       cerrarAdmin();
+        cerrarAdmin();
     }//GEN-LAST:event_btn_volverAdminActionPerformed
 
     public void cerrarAdmin() {
         this.dispose();
         menu.setVisible(true);
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

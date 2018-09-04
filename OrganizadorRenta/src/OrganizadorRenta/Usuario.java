@@ -91,9 +91,8 @@ public class Usuario {
         this.cantDias = cantDias;
     }
 
-    
     public int precioAlquiler() {
-        precio = (costoPorDia * cantDias) ;
+        precio = (costoPorDia * cantDias);
         return precio;
     }
 }

@@ -13,7 +13,7 @@ public class MainMenu extends javax.swing.JFrame {
     private UsuarioPremium usup;
     private Usuario usu;
 
-    public MainMenu(Usuario usuario, Alquiler alqui,UsuarioPremium usup,Usuario usu) {
+    public MainMenu(Usuario usuario, Alquiler alqui, UsuarioPremium usup, Usuario usu) {
         this.iniciarSesion = new IniciarSesion();
         this.user = usuario;
         this.alquiI = alqui;
@@ -23,8 +23,6 @@ public class MainMenu extends javax.swing.JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
-
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -125,14 +123,13 @@ public class MainMenu extends javax.swing.JFrame {
 
     public void closeSesion() {
 
-        
         this.dispose();
         iniciarSesion.setVisible(true);
 
     }
 
     public void abrirChat() {
-        chat = new Chat(this);
+        chat = new Chat(this,user);
         this.setVisible(false);
         chat.setVisible(true);
     }
@@ -144,7 +141,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     public void abrirAlquiler() {
-        alquilerc = new Calendar(this, user, alquiI,usup,usu);
+        alquilerc = new Calendar(this, user, alquiI, usup, usu);
         this.setVisible(false);
         alquilerc.setVisible(true);
     }

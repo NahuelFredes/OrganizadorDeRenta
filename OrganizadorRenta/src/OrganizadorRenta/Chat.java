@@ -19,17 +19,17 @@ import java.util.logging.Logger;
 public class Chat extends javax.swing.JFrame {
 
     private MainMenu menu;
-    
+
     public Chat(MainMenu men, Usuario user) throws SQLException, ClassNotFoundException {
-        
+
         con = new Conexion();
-        con.crearTabla(con.obtener());
         this.remitente = user.getNombre();
         initComponents();
         this.menu = men;
         mostrar.setEditable(false);
+        t=new Thread(new Lector());
         escribir.addKeyListener(new KeyAdapter() {
-            
+
             @Override
             public void keyPressed(KeyEvent e) {
                 int key = e.getKeyCode();
@@ -47,11 +47,8 @@ public class Chat extends javax.swing.JFrame {
 
             }
         });
+        t.start();
 
-    }
-
-    Chat(MainMenu aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @SuppressWarnings("unchecked")
@@ -160,19 +157,14 @@ public class Chat extends javax.swing.JFrame {
     public void closeChat() throws SQLException, ClassNotFoundException {
         this.dispose();
         menu.setVisible(true);
-        con.borrarTabla(con.obtener());
-        
 
     }
 
     public void enviarMsj() throws SQLException, ClassNotFoundException {
-        
-
-        mostrar.setText("");
-        con.setMensajes(con.obtener(), remitente, escribir.getText());
-        mostrar.append(con.getMensajes(con.obtener()));       
-        escribir.setText("");
-        System.out.println(con.obtener());
+        if (!escribir.getText().equals("")) {
+            con.setMensajes(con.obtener(), remitente, escribir.getText());
+            escribir.setText("");
+        }
     }
 
     private class Lector implements Runnable {

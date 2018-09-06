@@ -8,19 +8,25 @@ package OrganizadorRenta;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nahuelfredes
  */
 public class Chat extends javax.swing.JFrame {
+private MainMenu menu;
 
-    private MainMenu menu;
+    public Chat(MainMenu men, Usuario user) throws SQLException, ClassNotFoundException {
 
-    public Chat(MainMenu men) {
+        con = new Conexion();
+        this.remitente = user.getNombre();
         initComponents();
         this.menu = men;
         mostrar.setEditable(false);
+        t=new Thread(new Lector());
         escribir.addKeyListener(new KeyAdapter() {
 
             @Override
@@ -28,12 +34,19 @@ public class Chat extends javax.swing.JFrame {
                 int key = e.getKeyCode();
                 if (key == KeyEvent.VK_ENTER) {
 
-                    enviarMsj();
+                    try {
+                        enviarMsj();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                 }
 
             }
         });
+        t.start();
 
     }
 
@@ -116,29 +129,57 @@ public class Chat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_enviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_enviarActionPerformed
+    try {
         enviarMsj();
+    } catch (SQLException ex) {
+        Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_btn_enviarActionPerformed
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
+    try {
         closeChat();
+    } catch (SQLException ex) {
+        Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_btn_volverActionPerformed
 
     private void escribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escribirActionPerformed
 
     }//GEN-LAST:event_escribirActionPerformed
 
-    public void closeChat() {
+     public void closeChat() throws SQLException, ClassNotFoundException {
         this.dispose();
         menu.setVisible(true);
 
     }
-
-    public void enviarMsj() {
-        String escrito = escribir.getText();
-        mostrar.append(escrito + "\n");
-        escribir.setText("");
-
+    public void enviarMsj() throws SQLException, ClassNotFoundException {
+        if (!escribir.getText().equals("")) {
+            con.setMensajes(con.obtener(), remitente, escribir.getText());
+            escribir.setText("");
+        }
     }
+private class Lector implements Runnable {
+
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    mostrar.setText(con.getMensajes(con.obtener()));
+                } catch (SQLException ex) {
+                    Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+    }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -149,4 +190,8 @@ public class Chat extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea mostrar;
     // End of variables declaration//GEN-END:variables
+    private Conexion con;
+    private Thread t;
+    private String remitente;
 }
+

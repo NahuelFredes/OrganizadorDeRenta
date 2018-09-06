@@ -337,12 +337,10 @@ public class Calendar extends javax.swing.JFrame {
 
             } else {
                 try {
-                    String diaItxt = "../../../" + strDateF.replace('/', '-') + ".txt";
+                    String diaItxt = "/home/nahuelfredes/Escritorio/OrganizadorDeRenta/" + strDateF.replace('/', '-') + ".txt";
                     File archivo = new File(diaItxt);
                     try (FileWriter escritor = new FileWriter(archivo)) {
-                        //if (archivo.exists()) {
-                            //JOptionPane.showMessageDialog(null, "Ya esta alquilado alguno de los dias seleccionados", "Error", JOptionPane.WARNING_MESSAGE);
-                        //} else {
+           
                             try {
                                 if (!usup3.getNombre().equals("")) {
                                     escritor.write("Alquilado por: " + nombre
@@ -409,7 +407,7 @@ public class Calendar extends javax.swing.JFrame {
                     Date lDate = (Date) dias.get(i);
                     String ds = formatter.format(lDate);
                     try {
-                        String diaTxt = "../../../" + ds.replace('/', '-') + ".txt";
+                        String diaTxt = "/home/nahuelfredes/Escritorio/OrganizadorDeRenta/" + ds.replace('/', '-') + ".txt";
                         File archivo = new File(diaTxt);
                         try (FileWriter escritor = new FileWriter(archivo)) {
 
@@ -468,7 +466,7 @@ public class Calendar extends javax.swing.JFrame {
         }
 
         String diaCalendar = SDay + "-" + SMonth + "-" + CYear;
-        String dia = "../../" + diaCalendar + ".txt";
+        String dia = "/home/nahuelfredes/Escritorio/OrganizadorDeRenta/" + diaCalendar + ".txt";
         File archivodia = new File(dia);
         if (archivodia.exists()) {
             BufferedReader lector = new BufferedReader(new FileReader(archivodia));

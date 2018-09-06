@@ -205,6 +205,8 @@ public class Administracion extends javax.swing.JFrame {
     }
 
     public void calcGanancia() throws IOException, ParseException {
+        admin.setMonto_mes(0);
+        admin.setMonto_total(0);
         String Nombre = "";
         int contN = 0;
         int contTotal = 0;
@@ -258,147 +260,21 @@ public class Administracion extends javax.swing.JFrame {
             dates.add(new Date(curTime));
             curTime += interval;
         }
-        String totalFile = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + "total"+ ".txt";
+        String totalFile = "/home/nahuelfredes/Escritorio/OrganizadorDeRenta/" + "total"+ ".txt";
         File archivototal = new File(totalFile);
         FileWriter escritorTotal = new FileWriter(archivototal);
 
         for (int i = 0; i < dates.size(); i++) {
             Date lDate = (Date) dates.get(i);
             String fecha = formatter.format(lDate);
-            String mesFile = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + fecha.replace('/', '-') + ".txt";
+            String mesFile = "/home/nahuelfredes/Escritorio/OrganizadorDeRenta/" + fecha.replace('/', '-') + ".txt";
             File archivomes = new File(mesFile);
             if (archivomes.exists()) {
                 BufferedReader lector = new BufferedReader(new FileReader(mesFile));
                 linea = lector.readLine();
                 contN =contN + 100;
                 admin.setMonto_mes(contN);
-//                try {
-//
-//                    if (!Nombre.equals(usup3.getNombre())&& contN == 1) {
-//                        contN = 0;
-//                        while ((lector.readLine()) != null) {
-//                            contador = contador + 1;
-//                            if (contador == 2) {
-//                                System.out.println(admin.getMonto_mes());
-//                                if (admin.getMonto_mes() != costoTotalMes) {
-//                                    System.out.println(Nombre);
-//                                    costo_linea = lector.readLine();
-//                                    String strcostomes = costo_linea.replace("Costo: ", "");
-//                                    int costomes = Integer.parseInt(strcostomes);
-//                                    costoTotalMes = costomes + admin.getMonto_mes();
-//                                    System.out.println(admin.getMonto_mes());
-//                                    admin.setMonto_mes(costoTotalMes);
-//                                    System.out.println("desigual:" + admin.getMonto_mes());
-//
-//                                } else {
-//                                    Nombre = linea.replace("Alquilado por: ", "");
-//                                    System.out.println(Nombre);
-//                                    costo_linea = lector.readLine();
-//                                    String strcostomes = costo_linea.replace("Costo: ", "");
-//                                    int costomes = Integer.parseInt(strcostomes);
-//                                    costoTotalMes = costomes;
-//                                    admin.setMonto_mes(costoTotalMes);
-//                                    System.out.println("igual:" + admin.getMonto_mes());
-//
-//                                }
-//
-//                            }
-//
-//                        }
-//                    }
-//
-//                    if (!Nombre.equals(usup3.getNombre())) {
-//                        contN = 1;
-//                        while ((lector.readLine()) != null) {
-//                            contador = contador + 1;
-//                            if (contador == 2) {
-//                                System.out.println(admin.getMonto_mes());
-//                                if (admin.getMonto_mes() != costoTotalMes) {
-//                                    System.out.println(Nombre);
-//                                    costo_linea = lector.readLine();
-//                                    String strcostomes = costo_linea.replace("Costo: ", "");
-//                                    int costomes = Integer.parseInt(strcostomes);
-//                                    costoTotalMes = costomes + admin.getMonto_mes();
-//                                    System.out.println(admin.getMonto_mes());
-//                                    admin.setMonto_mes(costoTotalMes);
-//                                    System.out.println("desigual:" + admin.getMonto_mes());
-//
-//                                } else {
-//                                    Nombre = linea.replace("Alquilado por: ", "");
-//                                    System.out.println(Nombre);
-//                                    costo_linea = lector.readLine();
-//                                    String strcostomes = costo_linea.replace("Costo: ", "");
-//                                    int costomes = Integer.parseInt(strcostomes);
-//                                    costoTotalMes = costomes;
-//                                    System.out.println(admin.getMonto_mes());
-//                                    admin.setMonto_mes(costoTotalMes);
-//                                    System.out.println("igual:" + admin.getMonto_mes());
-//                                }
-//
-//                            }
-//
-//                        }
-//                    }
-//                } catch (Exception e) {
-//                }
-//                try {
-//
-//                    if (!Nombre.equals(usu.getNombre()) && contN == 1) {
-//                        contN = 0;
-//                        Nombre = linea.replace("Alquilado por: ", "");
-//                        while ((lector.readLine()) != null) {
-//                            contador = contador + 1;
-//                            if (contador == 2) {
-//                                if (admin.getMonto_mes() != costoTotalMes) {
-//                                    costo_linea = lector.readLine();
-//                                    String strcostomes = costo_linea.replace("Costo: ", "");
-//                                    int costomes = Integer.parseInt(strcostomes);
-//                                    costoTotalMes = costomes + admin.getMonto_mes();
-//                                    admin.setMonto_mes(costoTotalMes);
-//
-//                                } else {
-//                                    Nombre = linea.replace("Alquilado por: ", "");
-//                                    System.out.println(Nombre);
-//                                    costo_linea = lector.readLine();
-//                                    String strcostomes = costo_linea.replace("Costo: ", "");
-//                                    int costomes = Integer.parseInt(strcostomes);
-//                                    costoTotalMes = costomes + admin.getMonto_mes();
-//                                    admin.setMonto_mes(costoTotalMes);
-//                                }
-//
-//                            }
-//
-//                        }
-//
-//                        if (!Nombre.equals(usu.getNombre())) {
-//                            contN = 1;
-//                            while ((lector.readLine()) != null) {
-//                                contador = contador + 1;
-//                                if (contador == 2) {
-//                                    if (admin.getMonto_mes() != costoTotalMes) {
-//                                        costo_linea = lector.readLine();
-//                                        String strcostomes = costo_linea.replace("Costo: ", "");
-//                                        int costomes = Integer.parseInt(strcostomes);
-//                                        costoTotalMes = costomes + admin.getMonto_mes();
-//                                        admin.setMonto_mes(costoTotalMes);
-//
-//                                    } else {
-//                                        Nombre = linea.replace("Alquilado por: ", "");
-//                                        System.out.println(Nombre);
-//                                        costo_linea = lector.readLine();
-//                                        String strcostomes = costo_linea.replace("Costo: ", "");
-//                                        int costomes = Integer.parseInt(strcostomes);
-//                                        costoTotalMes = costomes + admin.getMonto_mes();
-//                                        admin.setMonto_mes(costoTotalMes);
-//                                    }
-//                                }
-//
-//                            }
-//                        }
-//
-//                    }
-//                } catch (Exception e) {
-//                }
+
 
             }
         }
@@ -425,12 +301,12 @@ public class Administracion extends javax.swing.JFrame {
 
     public void cargarUsuarios() throws IOException {
 
-        File carpeta = new File("/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/cuentas/");
+        File carpeta = new File("/home/nahuelfredes/Escritorio/OrganizadorDeRenta/cuentas/");
         File[] listOfFiles = carpeta.listFiles();
 
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                String usuario = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/cuentas/" + file.getName();
+                String usuario = "/home/nahuelfredes/Escritorio/OrganizadorDeRenta/cuentas/" + file.getName();
                 File usuarios = new File(usuario);
                 System.out.println(usuarios);
                 if (usuarios.exists()) {

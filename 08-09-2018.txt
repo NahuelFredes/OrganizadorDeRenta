@@ -1,0 +1,4 @@
+Alquilado por: Pablo
+cantidad de adultos: 2
+cantidad de menores: 0
+Costo: 280

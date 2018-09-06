@@ -1,0 +1,7 @@
+Nombre del Usuario: Nahuel
+Apellido del Usuario: Fredes
+Constraseña del Usuario: 123
+Correo del Usuario: mesi
+Fecha de nacimiento del Usuario: 01/04/2002
+El Usuario es Premium:  Si
+Tarjeta de credito del Usuario: 312412231

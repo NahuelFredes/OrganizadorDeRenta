@@ -1,0 +1,7 @@
+Nombre del Usuario: Pablo
+Apellido del Usuario: Palacios
+Constraseña del Usuario: 12345
+Correo del Usuario: lalalal
+Fecha de nacimiento del Usuario: 18/09/2002
+El Usuario es Premium:  Si
+Tarjeta de credito del Usuario: 44124554

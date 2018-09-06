@@ -25,53 +25,6 @@ public class Conexion {
         return cnx;
     }
 
-    public boolean logUser(Connection conection, String user) throws SQLException {
-        PreparedStatement consulta;
-        try {
-            consulta = conection.prepareStatement("select user from Login where user='" + user + "'");
-            ResultSet resultado = consulta.executeQuery();
-            if (resultado.next() && resultado.getString("user").equals(user)) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException ex) {
-            throw new SQLException(ex);
-        }
-    }
-
-    public boolean registro(Connection conexion, String usuario, String contraseña) throws SQLException {
-        PreparedStatement consulta;
-        try {
-            consulta = conexion.prepareStatement("select user from Login where user='" + usuario + "'");
-            ResultSet resultado = consulta.executeQuery();
-            if (resultado.next() && resultado.getString("user").equals(usuario)) {
-                return false;
-            } else {
-                consulta = conexion.prepareStatement("insert into Login (user,pass) values (" + "'" + usuario + "'" + "," + "'" + contraseña + "'" + ")");
-                consulta.executeUpdate();
-                return true;
-            }
-        } catch (SQLException ex) {
-            throw new SQLException(ex);
-        }
-    }
-
-    public boolean logPass(Connection conection, String pass) throws SQLException {
-        PreparedStatement consulta;
-        try {
-            consulta = conection.prepareStatement("select pass from Login where pass='" + pass + "'");
-            ResultSet resultado = consulta.executeQuery();
-            if (resultado.next() && resultado.getString("pass").equals(pass)) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException ex) {
-            throw new SQLException(ex);
-        }
-    }
-
     public static void cerrar() throws SQLException {
         if (cnx != null) {
             cnx.close();

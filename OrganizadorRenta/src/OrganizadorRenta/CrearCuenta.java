@@ -215,7 +215,7 @@ public class CrearCuenta extends javax.swing.JFrame {
 
         if (cuenta_premium.isSelected()) {
             if (!nombreLbl.getText().equals("") && (!apellidoLbl.getText().equals("")) && (!contraLbl.getText().equals("")) && (!mailLbl.getText().equals("")) && (!tarjetaLbl.getText().equals("")) && (!dateLbl.getDate().equals(null))) {
-                String file = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/IC/Premium/" + nombreLbl.getText() + ".txt";
+                String file = "../../../IC/Premium/" + nombreLbl.getText() + ".txt";
                 File archivoname = new File(file);
                 if (archivoname.exists()) {
                     JOptionPane.showMessageDialog(null, "La cuenta ya existe", "Error", JOptionPane.WARNING_MESSAGE);
@@ -232,7 +232,7 @@ public class CrearCuenta extends javax.swing.JFrame {
                     usupC.setPremium(true);
                     usupC.setDescuento(30);
                     usupC.calcDescuento(costo);
-                    String datosP = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/cuentas/" + usupC.getNombre() + usupC.getApellido() + ".txt";
+                    String datosP = "/home/nahuelfredes/Escritorio/OrganizadorDeRenta/cuentas/" + usupC.getNombre() + usupC.getApellido() + ".txt";
                     File archivo = new File(datosP);
                     try (FileWriter writer = new FileWriter(archivo)) {
                         writer.write("Nombre del Usuario: " + usupC.getNombre()
@@ -245,7 +245,7 @@ public class CrearCuenta extends javax.swing.JFrame {
                         );
                         writer.close();
                     }
-                    String directionIC = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/IC/" + usupC.getNombre() + ".txt";
+                    String directionIC = "../../../IC/" + usupC.getNombre() + ".txt";
                     File archivoIC = new File(directionIC);
                     try (FileWriter writer = new FileWriter(archivoIC)) {
                         writer.write(
@@ -266,7 +266,7 @@ public class CrearCuenta extends javax.swing.JFrame {
                 tarjetaLbl.setText("");
             }
         } else if (!nombreLbl.getText().equals("") && (!apellidoLbl.getText().equals("")) && (!contraLbl.getText().equals("")) && (!mailLbl.getText().equals("")) && (!dateLbl.getDate().equals(null))) {
-            String file = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/IC/" + nombreLbl.getText() + ".txt";
+            String file = "../../../IC/" + nombreLbl.getText() + ".txt";
             File archivoname = new File(file);
             if (archivoname.exists()) {
                 JOptionPane.showMessageDialog(null, "La cuenta ya existe", "Error", JOptionPane.WARNING_MESSAGE);
@@ -279,7 +279,7 @@ public class CrearCuenta extends javax.swing.JFrame {
                 userc.setNacimiento(dateLbl.getDate());
                 Date dateBirthN = dateLbl.getDate();
                 String strDateBirthN = DateFormat.getDateInstance().format(dateBirthN);
-                String datosN = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/cuentas/" + userc.getNombre() + userc.getApellido() + ".txt";
+                String datosN = "../../../cuentas/" + userc.getNombre() + userc.getApellido() + ".txt";
                 File archivo = new File(datosN);
                 try (FileWriter writer = new FileWriter(archivo)) {
                     writer.write("Nombre del Usuario: " + userc.getNombre()
@@ -291,7 +291,7 @@ public class CrearCuenta extends javax.swing.JFrame {
                     );
                     writer.close();
                 }
-                String directionIC = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/IC/" + userc.getNombre() + ".txt";
+                String directionIC = "../../../IC/" + userc.getNombre() + ".txt";
                 File archivoIC = new File(directionIC);
                 try (FileWriter writer = new FileWriter(archivoIC)) {
                     writer.write(

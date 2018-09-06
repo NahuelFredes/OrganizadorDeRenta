@@ -337,7 +337,7 @@ public class Calendar extends javax.swing.JFrame {
 
             } else {
                 try {
-                    String diaItxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + strDateF.replace('/', '-') + ".txt";
+                    String diaItxt = "../../../" + strDateF.replace('/', '-') + ".txt";
                     File archivo = new File(diaItxt);
                     try (FileWriter escritor = new FileWriter(archivo)) {
                         //if (archivo.exists()) {
@@ -409,7 +409,7 @@ public class Calendar extends javax.swing.JFrame {
                     Date lDate = (Date) dias.get(i);
                     String ds = formatter.format(lDate);
                     try {
-                        String diaTxt = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + ds.replace('/', '-') + ".txt";
+                        String diaTxt = "../../../" + ds.replace('/', '-') + ".txt";
                         File archivo = new File(diaTxt);
                         try (FileWriter escritor = new FileWriter(archivo)) {
 
@@ -468,7 +468,7 @@ public class Calendar extends javax.swing.JFrame {
         }
 
         String diaCalendar = SDay + "-" + SMonth + "-" + CYear;
-        String dia = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/" + diaCalendar + ".txt";
+        String dia = "../../" + diaCalendar + ".txt";
         File archivodia = new File(dia);
         if (archivodia.exists()) {
             BufferedReader lector = new BufferedReader(new FileReader(archivodia));

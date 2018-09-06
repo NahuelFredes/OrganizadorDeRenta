@@ -187,7 +187,7 @@ public class IniciarSesion extends javax.swing.JFrame {
 
         if (!lbl_password.getText().equals("") && (!lbl_nombre.getText().equals(""))) {
             if (premium.isSelected()) {
-                String ISP = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/IC/Premium/" + inicioNombre + ".txt";
+                String ISP = "/home/nahuelfredes/Escritorio/OrganizadorDeRenta/IC/Premium/" + inicioNombre + ".txt";
                 File archivoisP = new File(ISP);
                 if (archivoisP.exists()) {
                     BufferedReader lector = new BufferedReader(new FileReader(archivoisP));
@@ -208,7 +208,7 @@ public class IniciarSesion extends javax.swing.JFrame {
                 };
 
             } else {
-                String IS = "/home/teodoro/Escritorio/Proyecto github/OrganizadorDeRenta/IC/" + inicioNombre + ".txt";
+                String IS = "/home/nahuelfredes/Escritorio/OrganizadorDeRenta/IC/" + inicioNombre + ".txt";
                 File archivois = new File(IS);
                 if (archivois.exists()) {
                     BufferedReader lector = new BufferedReader(new FileReader(archivois));
